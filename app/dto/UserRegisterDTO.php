@@ -8,7 +8,7 @@ use OsumiFramework\OFW\Web\ORequest;
 class UserRegisterDTO implements ODTO{
 	private ?string $email = null;
 	private ?string $pass = null;
-	private ?string name = null;
+	private ?string $name = null;
 
 	public function getEmail(): ?string {
 		return $this->email;

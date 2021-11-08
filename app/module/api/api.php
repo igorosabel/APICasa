@@ -5,14 +5,10 @@ namespace OsumiFramework\App\Module;
 use OsumiFramework\OFW\Core\OModule;
 use OsumiFramework\OFW\Web\ORequest;
 use OsumiFramework\OFW\Routing\ORoute;
-use OsumiFramework\App\Model\Equipment;
 use OsumiFramework\App\Model\User;
-use OsumiFramework\App\Model\Scenario;
-use OsumiFramework\App\Model\ScenarioData;
-use OsumiFramework\App\Model\Game;
-use OsumiFramework\App\Model\World;
-use OsumiFramework\App\Model\WorldUnlocked;
 use OsumiFramework\App\Service\webService;
+use OsumiFramework\App\DTO\UserLoginDTO;
+use OsumiFramework\App\DTO\UserRegisterDTO;
 use OsumiFramework\OFW\Plugins\OToken;
 
 #[ORoute(
