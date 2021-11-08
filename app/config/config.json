@@ -1,0 +1,28 @@
+{
+    "name": "Casa",
+    "db": {
+        "host": "localhost",
+        "user": "casa",
+        "pass": "&vOsq823",
+        "name": "casa",
+        "charset": "utf8mb4",
+        "collate": "utf8mb4_unicode_ci"
+    },
+    "base_url": "https://apicasa.osumi.es",
+    "admin_email": "app.casa.osumi@gmail.com",
+    "email_pass": "jTj{9,,-khte7hu3",
+    "lang": "es",
+    "log_level": "ALL",
+    "extra": {
+        "secret": "228729f1961691fc5f25fdc8dd733ff3b75d8577"
+    },
+    "plugins": {
+        "email_smtp": {
+            "host": null,
+            "port": null,
+            "secure": null,
+            "user": null,
+            "pass": null
+        }
+    }
+}
