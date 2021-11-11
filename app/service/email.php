@@ -44,4 +44,25 @@ class emailService extends OService {
 
 		$email->send();
 	}
+
+	/**
+	 * Enviar email de contraseña cambiada
+	 *
+	 * @param User $user Objeto usuario con los datos del usuario que ha cambiado su contraseña
+	 *
+	 * @return void
+	 */
+	public function sendPasswordChanged(User $user): void {
+		$message = OTools::getTemplate($this->getConfig()->getDir('app_component').'email/password_changed/password_changed.php', '', [
+			'name'  => $user->get('name')
+		]);
+
+		$email = new OEmailSMTP();
+		$email->addRecipient($user->get('email'));
+		$email->setFrom($this->getConfig()->getAdminEmail(), 'Casa');
+		$email->setSubject('Contraseña cambiada');
+		$email->setMessage($message);
+
+		$email->send();
+	}
 }

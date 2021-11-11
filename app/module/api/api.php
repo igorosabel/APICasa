@@ -10,6 +10,7 @@ use OsumiFramework\App\Service\webService;
 use OsumiFramework\App\Service\emailService;
 use OsumiFramework\App\DTO\UserLoginDTO;
 use OsumiFramework\App\DTO\UserRegisterDTO;
+use OsumiFramework\App\DTO\NewPassDTO;
 use OsumiFramework\OFW\Plugins\OToken;
 
 #[ORoute(
@@ -126,7 +127,7 @@ class api extends OModule {
 	}
 
 	/**
-	 * Función para registrar un nuevo usuario
+	 * Función para obtener un enlace de recuperación de contraseña
 	 *
 	 * @param ORequest $req Request object with method, headers, parameters and filters used
 	 * @return void
@@ -146,6 +147,58 @@ class api extends OModule {
 			if ($user->find(['email' => $email])) {
 				$this->email_service->sendLostPassword($user);
 			}
+		}
+
+		$this->getTemplate()->add('status', $status);
+	}
+
+	/**
+	 * Función para comprobar un token de un email de recuperación
+	 *
+	 * @param ORequest $req Request object with method, headers, parameters and filters used
+	 * @return void
+	 */
+	#[ORoute('/check-password-token')]
+	public function checkPasswordToken(ORequest $req): void {
+		$status = 'ok';
+		$token  = $req->getParamString('token');
+
+		if (is_null($token)) {
+			$status = 'error';
+		}
+
+		if ($status=='ok') {
+				$check = $this->web_service->checkNewPasswordToken($token);
+				$status = $check['status'];
+		}
+
+		$this->getTemplate()->add('status', $status);
+	}
+
+	/**
+	 * Función para cambiar la contraseña de un usuario
+	 *
+	 * @param NewPassDTO $data Nueva contraseña y token de un usuario
+	 * @return void
+	 */
+	#[ORoute('/new-password')]
+	public function newPassword(NewPassDTO $data): void {
+		$status = 'ok';
+
+		if (!$data->isValid()) {
+			$status = 'error';
+		}
+
+		if ($status=='ok') {
+				$check = $this->web_service->checkNewPasswordToken($data->getToken());
+				$status = $check['status'];
+				if ($status == 'ok') {
+					$user = $check['user'];
+					$user->set('pass', password_hash($data->getPass(), PASSWORD_BCRYPT));
+					$user->save();
+
+					$this->email_service->sendPasswordChanged($user);
+				}
 		}
 
 		$this->getTemplate()->add('status', $status);
