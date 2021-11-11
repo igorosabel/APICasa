@@ -18,11 +18,11 @@
     },
     "plugins": {
         "email_smtp": {
-            "host": null,
-            "port": null,
-            "secure": null,
-            "user": null,
-            "pass": null
+            "host": "smtp.gmail.com",
+            "port": 587,
+            "secure": "tls",
+            "user": "app.casa.osumi@gmail.com",
+            "pass": "jTj{9,,-khte7hu3"
         }
     }
 }

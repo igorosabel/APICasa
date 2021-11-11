@@ -2,5 +2,6 @@
 	"status": "{{status}}",
 	"id": {{id}},
 	"name": "{{name}}",
-	"token": "{{token}}"
+	"token": "{{token}}",
+	"color": "{{color}}"
 }

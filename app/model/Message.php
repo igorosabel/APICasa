@@ -40,6 +40,12 @@ class Message extends OModel {
 				'default' => null,
 				'comment' => 'En caso de ser una tarea indica si esta completada 1 o no 0'
 			],
+			'private' => [
+				'type'    => OModel::BOOL,
+				'nullable' => false,
+				'default' => false,
+				'comment' => 'Indica si un mensaje es privado 1 o no 0'
+			],
 			'created_at' => [
 				'type'    => OModel::CREATED,
 				'comment' => 'Fecha de creación del registro'

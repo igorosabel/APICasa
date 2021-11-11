@@ -141,6 +141,9 @@ class OConfig {
 		if (array_key_exists('default_title', $config)) {
 			$this->setDefaultTitle($config['default_title']);
 		}
+		if (array_key_exists('admin_email', $config)) {
+			$this->setAdminEmail($config['admin_email']);
+		}
 		if (array_key_exists('lang', $config)) {
 			$this->setLang($config['lang']);
 		}
@@ -683,6 +686,26 @@ class OConfig {
 	 */
 	public function getDefaultTitle(): string {
 		return $this->default_title;
+	}
+
+	/**
+	 * Set up the admin email address
+	 *
+	 * @param string $ae Admin email address
+	 *
+	 * @return void
+	 */
+	public function setAdminEmail(string $ae): void {
+		$this->admin_email = $ae;
+	}
+
+	/**
+	 * Get the admin email address
+	 *
+	 * @return string Admin email address
+	 */
+	public function getAdminEmail(): string {
+		return $this->admin_email;
 	}
 
 	/**
