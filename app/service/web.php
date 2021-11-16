@@ -6,6 +6,10 @@ use OsumiFramework\OFW\Core\OService;
 use OsumiFramework\OFW\DB\ODB;
 use OsumiFramework\OFW\Plugins\OToken;
 use OsumiFramework\App\Model\User;
+use OsumiFramework\App\Model\Message;
+use OsumiFramework\App\Model\Tag;
+use OsumiFramework\App\Model\MessageTag;
+use OsumiFramework\OFW\Tools\OTools;
 
 class webService extends OService {
 	/**
@@ -50,5 +54,101 @@ class webService extends OService {
 		}
 
 		return ['status' => $status, 'user' => $user];
+	}
+
+	/**
+	 * Función para obtener la lista de tags de un usuario
+	 *
+	 * @param int $id_user Id del usuario
+	 *
+	 * @return array Lista de tags de un usuario
+	 */
+	public function getUserTags(int $id_user): array {
+		$tags = [];
+		$db = new ODB();
+		$sql = "SELECT * FROM `tag` WHERE `id_user` = ?";
+		$db->query($sql, [$id_user]);
+
+		while ($res = $db->next()) {
+			$tag = new Tag();
+			$tag->update($res);
+			array_push($tags, $tag);
+		}
+
+		return $tags;
+	}
+
+	/**
+	 * Función para actualizar las tags de un mensaje
+	 *
+	 * @param Message $message Objeto con el mensaje a actualizar
+	 *
+	 * @param string $tag_list Tags a aplicar al mensaje
+	 *
+	 * @return void
+	 */
+	public function updateTags(Message $message, string $tag_list): void {
+		$db = new ODB();
+		// Limpio tags actuales del mensaje
+		$sql = "DELETE FROM `message_tag` WHERE `id_message` = ?";
+		$db->query($sql, [$message->get('id')]);
+
+		// Recorro las tags que han llegado
+		$tags = explode(',', $tag_list);
+		foreach ($tags as $tag) {
+			$tag = trim($tag);
+			$sql = "SELECT * FROM `tag` WHERE `slug` = ?";
+			$db->query($sql, [OTools::slugify($tag)]);
+
+			$t = new Tag();
+			if ($res = $db->next()) {
+				$t->update($res);
+			}
+			else {
+				$t->set('id_user', $message->get('id_user'));
+				$t->set('name', $tag);
+				$t->set('slug', OTools::slugify($tag));
+				$t->save();
+			}
+			$mt = new MessageTag();
+			$mt->set('id_message', $message->get('id'));
+			$mt->set('id_tag', $t->get('id'));
+			$mt->save();
+		}
+
+		// Borro tags no usadas
+		$sql = "DELETE FROM `tag` WHERE `id_user` = ? AND `id` NOT IN (SELECT DISTINCT(`id_tag`) FROM `message_tag` WHERE `id_message` IN (SELECT `id` FROM `message` WHERE `id_user` = ?))";
+		$db->query($sql, [$message->get('id_user'), $message->get('id_user')]);
+	}
+
+	/**
+	 * Función para obtener la lista de mensajes de un usuario
+	 *
+	 * @param int $id_user Id del usuario que obtiene los mensajes
+	 *
+	 * @return array Lista de mensajes
+	 */
+	public function getMessages(int $id_user): array {
+		$db = new ODB();
+		$sql = "SELECT * FROM `message` WHERE `id_user` = ? ORDER BY `updated_at` DESC";
+		$db->query($sql, [$id_user]);
+		$list = [];
+		$user_list = [];
+
+		while ($res = $db->next()) {
+			$message = new Message();
+			$message->update($res);
+
+			if (!array_key_exists('user_'.$message->get('id_user'), $user_list)) {
+				$user = new User();
+				$user->find(['id' => $message->get('id_user')]);
+				$user_list['user_'.$message->get('id_user')] = $user;
+			}
+			$message->setColor($user_list['user_'.$message->get('id_user')]->get('color'));
+
+			array_push($list, $message);
+		}
+
+		return $list;
 	}
 }

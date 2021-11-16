@@ -13,7 +13,7 @@ class MessageTag extends OModel {
 			'id_message' => [
 				'type'    => OModel::PK,
 				'incr' => false,
-				'ref' => 'asset.id',
+				'ref' => 'message.id',
 				'comment' => 'Id del mensaje'
 			],
 			'id_tag' => [

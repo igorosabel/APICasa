@@ -40,7 +40,7 @@ class Message extends OModel {
 				'default' => null,
 				'comment' => 'En caso de ser una tarea indica si esta completada 1 o no 0'
 			],
-			'private' => [
+			'is_private' => [
 				'type'    => OModel::BOOL,
 				'nullable' => false,
 				'default' => false,
@@ -118,5 +118,27 @@ class Message extends OModel {
 		}
 
 		return implode(', ', $tags);
+	}
+
+	private ?string $color = null;
+
+	/**
+	 * Obtiene el color del mensaje
+	 *
+	 * @return string Color del mensaje
+	 */
+	public function getColor(): ?string {
+		return $this->color;
+	}
+
+	/**
+	 * Guarda el color del mensaje
+	 *
+	 * @param string $color Color del mensaje
+	 *
+	 * @return void
+	 */
+	public function setColor(string $color):  void {
+		$this->color = $color;
 	}
 }

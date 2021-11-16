@@ -13,7 +13,7 @@ use OsumiFramework\OFW\Plugins\OToken;
  *
  * @return array Return filter status (ok / error) and information
  */
-function gameFilter(array $params, array $headers): array {
+function loginFilter(array $params, array $headers): array {
 	global $core;
 	$ret = ['status'=>'error', 'id'=>null];
 

@@ -18,6 +18,7 @@ class Tag extends OModel {
 				'type'    => OModel::NUM,
 				'nullable' => false,
 				'default' => null,
+				'ref' => 'user.id',
 				'comment' => 'Id del usuario que crea la tag'
 			],
 			'name' => [
@@ -26,6 +27,13 @@ class Tag extends OModel {
 				'default' => null,
 				'size' => 50,
 				'comment' => 'Texto de la tag'
+			],
+			'slug' => [
+				'type'    => OModel::TEXT,
+				'nullable' => false,
+				'default' => null,
+				'size' => 50,
+				'comment' => 'Slug del texto de la tag'
 			],
 			'created_at' => [
 				'type'    => OModel::CREATED,

@@ -6,11 +6,13 @@ use OsumiFramework\OFW\Core\OModule;
 use OsumiFramework\OFW\Web\ORequest;
 use OsumiFramework\OFW\Routing\ORoute;
 use OsumiFramework\App\Model\User;
+use OsumiFramework\App\Model\Message;
 use OsumiFramework\App\Service\webService;
 use OsumiFramework\App\Service\emailService;
 use OsumiFramework\App\DTO\UserLoginDTO;
 use OsumiFramework\App\DTO\UserRegisterDTO;
 use OsumiFramework\App\DTO\NewPassDTO;
+use OsumiFramework\App\DTO\MessageDTO;
 use OsumiFramework\OFW\Plugins\OToken;
 
 #[ORoute(
@@ -199,6 +201,183 @@ class api extends OModule {
 
 					$this->email_service->sendPasswordChanged($user);
 				}
+		}
+
+		$this->getTemplate()->add('status', $status);
+	}
+
+	/**
+	 * Función para obtener la lista de tags de un usuario
+	 *
+	 * @param ORequest $req Request object with method, headers, parameters and filters used
+	 * @return void
+	 */
+	#[ORoute(
+		'/get-tags',
+		filter: 'loginFilter'
+	)]
+	public function getTags(ORequest $req): void {
+		$status = 'ok';
+		$filter = $req->getFilter('loginFilter');
+
+		if (is_null($filter) || $filter['status']=='error') {
+			$status = 'error';
+		}
+
+		if ($status=='ok') {
+				$list = $this->web_service->getUserTags($filter['id']);
+		}
+
+		$this->getTemplate()->add('status', $status);
+		$this->getTemplate()->addComponent('list', 'model/tag_list', ['list' => $list, 'extra' => 'nourlencode']);
+	}
+
+	/**
+	 * Función para guardar un mensaje
+	 *
+	 * @param MessageDTO $data Datos del mensaje a guardar
+	 * @return void
+	 */
+	#[ORoute(
+		'/save-message',
+		filter: 'loginFilter'
+	)]
+	public function saveMessage(MessageDTO $data): void {
+		$status = 'ok';
+
+		if (!$data->isValid()) {
+			$status = 'error';
+		}
+
+		if ($status=='ok') {
+			$message = new Message();
+			if ($data->getId() != -1) {
+				$message->find(['id' => $data->getId()]);
+			}
+			else {
+				$message->set('id_user', $data->getIdUser());
+			}
+			if ($message->get('id_user') == $data->getIdUser()) {
+				$message->set('type', $data->getType());
+				$message->set('body', $data->getBody());
+				$message->set('done', $data->getDone());
+				$message->set('is_private', $data->getIsPrivate());
+				$message->set('color', $data->getColor());
+				$message->save();
+
+				$this->web_service->updateTags($message, $data->getTagList());
+			}
+			else {
+				$status = 'error';
+			}
+		}
+
+		$this->getTemplate()->add('status', $status);
+	}
+
+	/**
+	 * Función para obtener la lista de mensajes
+	 *
+	 * @param ORequest $req Request object with method, headers, parameters and filters used
+	 * @return void
+	 */
+	#[ORoute(
+		'/get-messages',
+		filter: 'loginFilter'
+	)]
+	public function getMessages(ORequest $req): void {
+		$status = 'ok';
+		$filter = $req->getFilter('loginFilter');
+		$list   = [];
+
+		if (is_null($filter) || $filter['status']=='error') {
+			$status = 'error';
+		}
+
+		if ($status == 'ok') {
+			$list = $this->web_service->getMessages($filter['id']);
+		}
+
+		$this->getTemplate()->add('status', $status);
+		$this->getTemplate()->addComponent('list', 'model/message_list', ['list' => $list, 'extra' => 'nourlencode']);
+	}
+
+	/**
+	 * Función para obtener un mensaje concreto
+	 *
+	 * @param ORequest $req Request object with method, headers, parameters and filters used
+	 * @return void
+	 */
+	#[ORoute(
+		'/get-message',
+		filter: 'loginFilter'
+	)]
+	public function getMessage(ORequest $req): void {
+		$status  = 'ok';
+		$id      = $req->getParamInt('id');
+		$filter  = $req->getFilter('loginFilter');
+		$message = null;
+
+		if (is_null($id) || is_null($filter) || $filter['status']=='error') {
+			$status = 'error';
+		}
+
+		if ($status == 'ok') {
+			$message = new Message();
+			if ($message->find(['id' => $id])) {
+				if ($message->get('id_user') == $filter['id']) {
+					$user = new User();
+					$user->find(['id' => $message->get('id_user')]);
+					$message->setColor($user->get('color'));
+				}
+				else {
+					$message = null;
+					$status = 'error';
+				}
+			}
+			else {
+				$message = null;
+				$status = 'error';
+			}
+		}
+
+		$this->getTemplate()->add('status', $status);
+		$this->getTemplate()->addComponent('message', 'model/message', ['message' => $message, 'extra' => 'nourlencode']);
+	}
+
+	/**
+	 * Función para actualizar el estado de una tarea
+	 *
+	 * @param ORequest $req Request object with method, headers, parameters and filters used
+	 * @return void
+	 */
+	#[ORoute(
+		'/update-task',
+		filter: 'loginFilter'
+	)]
+	public function updateTask(ORequest $req): void {
+		$status = 'ok';
+		$id     = $req->getParamInt('id');
+		$filter = $req->getFilter('loginFilter');
+
+		if (is_null($id) || is_null($filter) || $filter['status']=='error') {
+			$status = 'error';
+		}
+
+		if ($status == 'ok') {
+			$message = new Message();
+			if ($message->find(['id' => $id])) {
+				if ($message->get('id_user') == $filter['id']) {
+					$message->set('done', !$message->get('done'));
+					$message->save();
+				}
+				else {
+					$status = 'error';
+				}
+			}
+			else {
+				$status = 'error';
+			}
 		}
 
 		$this->getTemplate()->add('status', $status);
