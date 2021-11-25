@@ -57,12 +57,32 @@ class User extends OModel {
 		parent::load($table_name, $model);
 	}
 
+	/**
+	 * Función para comprobar un inicio de sesión. Primero busca el usuario por su email y luego comprueba su contraseña.
+	 *
+	 * @param string $email Email del usuario
+	 *
+	 * @param string $pass Contraseña a comprobar del usuario
+	 *
+	 * @return bool Devuelve si el inicio de sesión es correcto
+	 */
 	public function login(string $email, string $pass): bool {
 		if ($this->find(['email' => $email])) {
-			return password_verify($pass, $this->get('pass'));
+			return $this->checkPass($pass);
 		}
 		else {
 			return false;
 		}
+	}
+
+	/**
+	 * Comprueba la contraseña del usuario actualmente cargado
+	 *
+	 * @param string $pass Contraseña a comprobar del usuario
+	 *
+	 * @return bool Devuelve si el inicio de sesión es correcto
+	 */
+	public function checkPass(string $pass): bool {
+		return password_verify($pass, $this->get('pass'));
 	}
 }

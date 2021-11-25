@@ -13,6 +13,8 @@ use OsumiFramework\App\DTO\UserLoginDTO;
 use OsumiFramework\App\DTO\UserRegisterDTO;
 use OsumiFramework\App\DTO\NewPassDTO;
 use OsumiFramework\App\DTO\MessageDTO;
+use OsumiFramework\App\DTO\UserUpdateDTO;
+use OsumiFramework\App\DTO\PassUpdateDTO;
 use OsumiFramework\OFW\Plugins\OToken;
 
 #[ORoute(
@@ -377,6 +379,110 @@ class api extends OModule {
 			}
 			else {
 				$status = 'error';
+			}
+		}
+
+		$this->getTemplate()->add('status', $status);
+	}
+	
+	/**
+	 * Función para obtener los datos de perfil de un usuario
+	 *
+	 * @param ORequest $req Request object with method, headers, parameters and filters used
+	 * @return void
+	 */
+	#[ORoute(
+		'/get-user',
+		filter: 'loginFilter'
+	)]
+	public function getUser(ORequest $req): void {
+		$status = 'ok';
+		$filter = $req->getFilter('loginFilter');
+
+		$id    = -1;
+		$name  = '';
+		$email = '';
+		$color = '';
+
+		if (is_null($filter) || $filter['status']=='error') {
+			$status = 'error';
+		}
+
+		if ($status == 'ok') {
+			$user = new User();
+			$user->find(['id' => $filter['id']]);
+			
+			$id    = $user->get('id');
+			$name  = $user->get('name');
+			$email = $user->get('email');
+			$color = $user->get('color');
+		}
+
+		$this->getTemplate()->add('status', $status);
+		$this->getTemplate()->add('id',     $id);
+		$this->getTemplate()->add('name',   $name);
+		$this->getTemplate()->add('email',  $email);
+		$this->getTemplate()->add('color',  $color);
+	}
+	
+	/**
+	 * Función para actualizar los datos de perfil de un usuario
+	 *
+	 * @param UserUpdateDTO $data Objeto con los datos del usuario
+	 * @return void
+	 */
+	#[ORoute(
+		'/update-user',
+		filter: 'loginFilter'
+	)]
+	public function updateUser(UserUpdateDTO $data): void {
+		$status = 'ok';
+
+		if (!$data->isValid()) {
+			$status = 'error';
+		}
+
+		if ($status == 'ok') {
+			$user = new User();
+			$user->find(['id' => $data->getId()]);
+
+			$user->set('name',  $data->getName());
+			$user->set('email', $data->getEmail());
+			$user->set('color', $data->getColor());
+
+			$user->save();
+		}
+
+		$this->getTemplate()->add('status', $status);
+	}
+
+	/**
+	 * Función para actualizar la contraseña de un usuario
+	 *
+	 * @param PassUpdateDTO $data Objeto con la contraseña actual y nueva del usuario
+	 * @return void
+	 */
+	#[ORoute(
+		'/update-pass',
+		filter: 'loginFilter'
+	)]
+	public function updatePass(PassUpdateDTO $data): void {
+		$status = 'ok';
+
+		if (!$data->isValid()) {
+			$status = 'error';
+		}
+
+		if ($status == 'ok') {
+			$user = new User();
+			$user->find(['id' => $data->getIdToken()]);
+
+			if ($user->checkPass($data->getCurrent())) {
+				$user->set('pass', password_hash($data->getNewPass(), PASSWORD_BCRYPT));
+				$user->save();
+			}
+			else {
+				$status = 'error-pass';
 			}
 		}
 
