@@ -8,7 +8,7 @@ use OsumiFramework\App\DTO\NewPassDTO;
 
 #[OModuleAction(
 	url: '/new-password',
-	services: 'web, email'
+	services: ['web', 'email']
 )]
 class newPasswordAction extends OAction {
 	/**

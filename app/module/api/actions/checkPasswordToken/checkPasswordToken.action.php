@@ -8,7 +8,7 @@ use OsumiFramework\OFW\Web\ORequest;
 
 #[OModuleAction(
 	url: '/check-password-token',
-	services: 'web'
+	services: ['web']
 )]
 class checkPasswordTokenAction extends OAction {
 	/**

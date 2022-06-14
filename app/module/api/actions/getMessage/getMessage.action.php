@@ -12,7 +12,7 @@ use OsumiFramework\App\Component\MessageComponent;
 #[OModuleAction(
 	url: '/get-message',
 	filter: 'login',
-	components: 'model/message'
+	components: ['model/message']
 )]
 class getMessageAction extends OAction {
 	/**
@@ -25,7 +25,7 @@ class getMessageAction extends OAction {
 		$status  = 'ok';
 		$id      = $req->getParamInt('id');
 		$filter  = $req->getFilter('login');
-		$message_component = new MessageComponent(['message' => null, 'extra' => 'nourlencode']);
+		$message_component = new MessageComponent(['message' => null]);
 
 		if (is_null($id) || is_null($filter) || $filter['status']=='error') {
 			$status = 'error';
@@ -38,7 +38,7 @@ class getMessageAction extends OAction {
 					$user = new User();
 					$user->find(['id' => $message->get('id_user')]);
 					$message->setColor($user->get('color'));
-					$message_component = new MessageComponent(['message' => $message, 'extra' => 'nourlencode']);
+					$message_component->setValue('message', $message);
 				}
 				else {
 					$status = 'error';

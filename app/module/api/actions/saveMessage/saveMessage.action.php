@@ -10,7 +10,7 @@ use OsumiFramework\App\Model\Message;
 #[OModuleAction(
 	url: '/save-message',
 	filter: 'login',
-	services: 'web'
+	services: ['web']
 )]
 class saveMessageAction extends OAction {
 	/**

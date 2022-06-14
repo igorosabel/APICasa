@@ -29,8 +29,8 @@ class loginAction extends OAction {
 			$status = 'error';
 		}
 		else {
-			$email  = $data->getEmail();
-			$pass   = $data->getPass();
+			$email = $data->getEmail();
+			$pass  = $data->getPass();
 		}
 
 		if ($status=='ok') {

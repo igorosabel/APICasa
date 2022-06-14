@@ -21,7 +21,7 @@ class updateTaskAction extends OAction {
 	public function run(ORequest $req):void {
 		$status = 'ok';
 		$id     = $req->getParamInt('id');
-		$filter = $req->getFilter('loginFilter');
+		$filter = $req->getFilter('login');
 
 		if (is_null($id) || is_null($filter) || $filter['status']=='error') {
 			$status = 'error';

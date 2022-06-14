@@ -9,7 +9,7 @@ use OsumiFramework\App\Model\User;
 
 #[OModuleAction(
 	url: '/recover',
-	services: 'email'
+	services: ['email']
 )]
 class recoverAction extends OAction {
 	/**

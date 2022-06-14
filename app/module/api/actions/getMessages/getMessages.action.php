@@ -10,8 +10,8 @@ use OsumiFramework\App\Component\MessageListComponent;
 #[OModuleAction(
 	url: '/get-messages',
 	filter: 'login',
-	services: 'web',
-	components: 'model/message_list'
+	services: ['web'],
+	components: ['model/message_list']
 )]
 class getMessagesAction extends OAction {
 	/**
@@ -23,7 +23,7 @@ class getMessagesAction extends OAction {
 	public function run(ORequest $req):void {
 		$status = 'ok';
 		$filter = $req->getFilter('login');
-		$message_list_component = new MessageListComponent(['list' => [], 'extra' => 'nourlencode']);
+		$message_list_component = new MessageListComponent(['list' => []]);
 
 		if (is_null($filter) || $filter['status']=='error') {
 			$status = 'error';
@@ -31,7 +31,7 @@ class getMessagesAction extends OAction {
 
 		if ($status == 'ok') {
 			$list = $this->web_service->getMessages($filter['id']);
-			$message_list_component = new MessageListComponent(['list' => $list, 'extra' => 'nourlencode']);
+			$message_list_component->setValue('list', $list);
 		}
 
 		$this->getTemplate()->add('status', $status);
