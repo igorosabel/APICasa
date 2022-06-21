@@ -5,5 +5,5 @@ namespace OsumiFramework\App\Component;
 use OsumiFramework\OFW\Core\OComponent;
 
 class MessageComponent extends OComponent {
-  private string $depends = 'model/tag_list';
+	public array $depends = ['model/tag_list'];
 }
