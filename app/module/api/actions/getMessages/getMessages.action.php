@@ -9,7 +9,7 @@ use OsumiFramework\App\Component\MessageListComponent;
 
 #[OModuleAction(
 	url: '/get-messages',
-	filter: 'login',
+	filters: ['login'],
 	services: ['web'],
 	components: ['model/message_list']
 )]

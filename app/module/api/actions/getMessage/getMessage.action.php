@@ -11,7 +11,7 @@ use OsumiFramework\App\Component\MessageComponent;
 
 #[OModuleAction(
 	url: '/get-message',
-	filter: 'login',
+	filters: ['login'],
 	components: ['model/message']
 )]
 class getMessageAction extends OAction {

@@ -9,7 +9,7 @@ use OsumiFramework\App\Model\Message;
 
 #[OModuleAction(
 	url: '/update-task',
-	filter: 'login'
+	filters: ['login']
 )]
 class updateTaskAction extends OAction {
 	/**

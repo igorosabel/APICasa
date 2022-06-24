@@ -9,7 +9,7 @@ use OsumiFramework\App\Model\User;
 
 #[OModuleAction(
 	url: '/get-user',
-	filter: 'login'
+	filters: ['login']
 )]
 class getUserAction extends OAction {
 	/**
