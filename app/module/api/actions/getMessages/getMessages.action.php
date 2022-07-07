@@ -5,13 +5,12 @@ namespace OsumiFramework\App\Module\Action;
 use OsumiFramework\OFW\Routing\OModuleAction;
 use OsumiFramework\OFW\Routing\OAction;
 use OsumiFramework\OFW\Web\ORequest;
-use OsumiFramework\App\Component\MessageListComponent;
+use OsumiFramework\App\Component\Model\MessageListComponent;
 
 #[OModuleAction(
 	url: '/get-messages',
 	filters: ['login'],
-	services: ['web'],
-	components: ['model/message_list']
+	services: ['web']
 )]
 class getMessagesAction extends OAction {
 	/**

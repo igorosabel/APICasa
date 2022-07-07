@@ -7,12 +7,11 @@ use OsumiFramework\OFW\Routing\OAction;
 use OsumiFramework\OFW\Web\ORequest;
 use OsumiFramework\App\Model\Message;
 use OsumiFramework\App\Model\User;
-use OsumiFramework\App\Component\MessageComponent;
+use OsumiFramework\App\Component\Model\MessageComponent;
 
 #[OModuleAction(
 	url: '/get-message',
-	filters: ['login'],
-	components: ['model/message']
+	filters: ['login']
 )]
 class getMessageAction extends OAction {
 	/**
