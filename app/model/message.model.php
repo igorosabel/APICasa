@@ -3,59 +3,69 @@
 namespace OsumiFramework\App\Model;
 
 use OsumiFramework\OFW\DB\OModel;
+use OsumiFramework\OFW\DB\OModelGroup;
+use OsumiFramework\OFW\DB\OModelField;
 use OsumiFramework\App\Model\Tag;
 
 class Message extends OModel {
 	/**
 	 * Configures current model object based on data-base table structure
 	 */	function __construct() {
-		$model = [
-			'id' => [
-				'type'    => OModel::PK,
-				'comment' => 'Id unico de cada mensaje'
-			],
-			'id_user' => [
-				'type'    => OModel::NUM,
-				'nullable' => true,
-				'default' => null,
-				'ref' => 'user.id',
-				'comment' => 'Id del usuario que crea el mensaje'
-			],
-			'body' => [
-				'type'    => OModel::LONGTEXT,
-				'nullable' => false,
-				'default' => null,
-				'comment' => 'Contenido del mensaje'
-			],
-			'type' => [
-				'type'    => OModel::NUM,
-				'nullable' => false,
-				'default' => 0,
-				'comment' => 'Tipo de mensaje 0 nota 1 tarea'
-			],
-			'done' => [
-				'type'    => OModel::BOOL,
-				'nullable' => false,
-				'default' => null,
-				'comment' => 'En caso de ser una tarea indica si esta completada 1 o no 0'
-			],
-			'is_private' => [
-				'type'    => OModel::BOOL,
-				'nullable' => false,
-				'default' => false,
-				'comment' => 'Indica si un mensaje es privado 1 o no 0'
-			],
-			'created_at' => [
-				'type'    => OModel::CREATED,
-				'comment' => 'Fecha de creación del registro'
-			],
-			'updated_at' => [
-				'type'    => OModel::UPDATED,
-				'nullable' => true,
-				'default' => null,
-				'comment' => 'Fecha de última modificación del registro'
-			]
-		];
+		$model = new OModelGroup(
+			new OModelField(
+				name: 'id',
+				type: OMODEL_PK,
+				comment: 'Id unico de cada mensaje'
+			),
+			new OModelField(
+				name: 'id_user',
+				type: OMODEL_NUM,
+				nullable: true,
+				default: null,
+				ref: 'user.id',
+				comment: 'Id del usuario que crea el mensaje'
+			),
+			new OModelField(
+				name: 'body',
+				type: OMODEL_LONGTEXT,
+				nullable: false,
+				default: 'null',
+				comment: 'Contenido del mensaje'
+			),
+			new OModelField(
+				name: 'type',
+				type: OMODEL_NUM,
+				nullable: false,
+				default: 0,
+				comment: 'Tipo de mensaje 0 nota 1 tarea'
+			),
+			new OModelField(
+				name: 'done',
+				type: OMODEL_BOOL,
+				nullable: false,
+				default: null,
+				comment: 'En caso de ser una tarea indica si esta completada 1 o no 0'
+			),
+			new OModelField(
+				name: 'is_private',
+				type: OMODEL_BOOL,
+				nullable: false,
+				default: false,
+				comment: 'Indica si un mensaje es privado 1 o no 0'
+			),
+			new OModelField(
+				name: 'created_at',
+				type: OMODEL_CREATED,
+				comment: 'Fecha de creación del registro'
+			),
+			new OModelField(
+				name: 'updated_at',
+				type: OMODEL_UPDATED,
+				nullable: true,
+				default: null,
+				comment: 'Fecha de última modificación del registro'
+			)
+		);
 
 		parent::load($model);
 	}
