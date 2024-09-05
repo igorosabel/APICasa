@@ -1,7 +1,0 @@
-{
-	"status": "{{status}}",
-	"id": {{id}},
-	"name": "{{name}}",
-	"token": "{{token}}",
-	"color": "{{color}}"
-}

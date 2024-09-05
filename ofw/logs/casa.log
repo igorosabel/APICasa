@@ -1,0 +1,946 @@
+[2024-09-05 12:04:54] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:04:54] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/Login',
+)
+[2024-09-05 12:04:54] - [ERROR] - [Osumi\OsumiFramework\Core\OCore] - [OCore.php - 258] - Error: "Class "Osumi\OsumiFramework\App\Component\Model\FamilyComponent\FamilyComponent" not found"
+File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/src/Module/ApiModule/Actions/Login/LoginAction.php" (Line: 27)
+
+Trace: 
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/vendor/osumionline/framework/src/Core/OCore.php (Line: 212)"
+  Class: "Osumi\OsumiFramework\App\Module\ApiModule\Actions\Login\LoginAction"
+  Function: "run"
+
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/public/index.php (Line: 12)"
+  Class: "Osumi\OsumiFramework\Core\OCore"
+  Function: "run"
+
+
+[2024-09-05 12:05:05] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:05:05] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/Login',
+)
+[2024-09-05 12:05:05] - [ERROR] - [Osumi\OsumiFramework\Core\OCore] - [OCore.php - 258] - Error: "Class "Osumi\OsumiFramework\App\Component\Model\FamilyComponent\FamilyComponent" not found"
+File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/src/Module/ApiModule/Actions/Login/LoginAction.php" (Line: 27)
+
+Trace: 
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/vendor/osumionline/framework/src/Core/OCore.php (Line: 212)"
+  Class: "Osumi\OsumiFramework\App\Module\ApiModule\Actions\Login\LoginAction"
+  Function: "run"
+
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/public/index.php (Line: 12)"
+  Class: "Osumi\OsumiFramework\Core\OCore"
+  Function: "run"
+
+
+[2024-09-05 12:11:27] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:11:27] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/Login',
+)
+[2024-09-05 12:11:27] - [ERROR] - [Osumi\OsumiFramework\Core\OCore] - [OCore.php - 258] - Error: "Class "Osumi\OsumiFramework\App\Component\Model\FamilyComponent\FamilyComponent" not found"
+File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/src/Module/ApiModule/Actions/Login/LoginAction.php" (Line: 27)
+
+Trace: 
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/vendor/osumionline/framework/src/Core/OCore.php (Line: 212)"
+  Class: "Osumi\OsumiFramework\App\Module\ApiModule\Actions\Login\LoginAction"
+  Function: "run"
+
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/public/index.php (Line: 12)"
+  Class: "Osumi\OsumiFramework\Core\OCore"
+  Function: "run"
+
+
+[2024-09-05 12:11:58] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:11:58] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/Login',
+)
+[2024-09-05 12:11:58] - [ERROR] - [Osumi\OsumiFramework\Core\OCore] - [OCore.php - 258] - Error: "Class "Osumi\OsumiFramework\App\Component\Model\FamilyComponent\FamilyComponent" not found"
+File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/src/Module/ApiModule/Actions/Login/LoginAction.php" (Line: 27)
+
+Trace: 
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/vendor/osumionline/framework/src/Core/OCore.php (Line: 212)"
+  Class: "Osumi\OsumiFramework\App\Module\ApiModule\Actions\Login\LoginAction"
+  Function: "run"
+
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/public/index.php (Line: 12)"
+  Class: "Osumi\OsumiFramework\Core\OCore"
+  Function: "run"
+
+
+[2024-09-05 12:40:15] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:40:15] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/Login',
+)
+[2024-09-05 12:40:15] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `email` = 'inigo.gorosabel@gmail.com' 
+[2024-09-05 12:40:15] - [ERROR] - [Osumi\OsumiFramework\Core\OCore] - [OCore.php - 258] - Error: "Class "Osumi\OsumiFramework\App\Module\ApiModule\Actions\Login\OToken" not found"
+File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/src/Module/ApiModule/Actions/Login/LoginAction.php" (Line: 45)
+
+Trace: 
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/vendor/osumionline/framework/src/Core/OCore.php (Line: 212)"
+  Class: "Osumi\OsumiFramework\App\Module\ApiModule\Actions\Login\LoginAction"
+  Function: "run"
+
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/public/index.php (Line: 12)"
+  Class: "Osumi\OsumiFramework\Core\OCore"
+  Function: "run"
+
+
+[2024-09-05 12:42:01] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:42:01] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/Login',
+)
+[2024-09-05 12:42:01] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `email` = 'inigo.gorosabel@gmail.com' 
+[2024-09-05 12:42:01] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 12:42:01] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 12:42:01] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'id',
+    'value' => '1',
+  ),
+  2 => 
+  array (
+    'name' => 'name',
+    'value' => 'Iñigo',
+  ),
+  3 => 
+  array (
+    'name' => 'token',
+    'value' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzI1NjE5MzIxfQ.7d8cc871ba800eb6e8e63a37cf1ba03d0fb75bf112b6fb2ff95f12078aa012a3',
+  ),
+  4 => 
+  array (
+    'name' => 'color',
+    'value' => '5b78ec',
+  ),
+  5 => 
+  array (
+    'name' => 'family',
+    'value' => 'ERROR: File /var/www/vhosts/osumi.es/apicasatest.osumi.es/src/Component/Model/FamilyComponent/FamilyComponentTemplate.php not found',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 12:45:33] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:45:33] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/Login',
+)
+[2024-09-05 12:45:33] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `email` = 'inigo.gorosabel@gmail.com' 
+[2024-09-05 12:45:33] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 12:45:33] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 12:45:33] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'id',
+    'value' => '1',
+  ),
+  2 => 
+  array (
+    'name' => 'name',
+    'value' => 'Iñigo',
+  ),
+  3 => 
+  array (
+    'name' => 'token',
+    'value' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzI1NjE5NTMzfQ.834d9d427c6887279182ebd85299b9dd010e3396d5f2af57e2a4aa5fcfde03c3',
+  ),
+  4 => 
+  array (
+    'name' => 'color',
+    'value' => '5b78ec',
+  ),
+  5 => 
+  array (
+    'name' => 'family',
+    'value' => 'null
+',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 12:45:33] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:45:33] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/GetMessages',
+)
+[2024-09-05 12:45:33] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `id` = '1' 
+[2024-09-05 12:45:33] - [ERROR] - [Osumi\OsumiFramework\Core\OCore] - [OCore.php - 258] - Error: "Class "Osumi\OsumiFramework\App\Component\Model\TagListComponent" not found"
+File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/src/Component/Model/MessageComponent/MessageComponentTemplate.php" (Line: 9)
+
+Trace: 
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/vendor/osumionline/framework/src/Tools/OTools.php (Line: 93)"
+  Function: "include"
+
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/vendor/osumionline/framework/src/Core/OComponent.php (Line: 99)"
+  Class: "Osumi\OsumiFramework\Tools\OTools"
+  Function: "getPartial"
+
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/src/Component/Model/MessageListComponent/MessageListComponentTemplate.php (Line: 6)"
+  Class: "Osumi\OsumiFramework\Core\OComponent"
+  Function: "__toString"
+
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/vendor/osumionline/framework/src/Tools/OTools.php (Line: 93)"
+  Function: "include"
+
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/vendor/osumionline/framework/src/Core/OComponent.php (Line: 99)"
+  Class: "Osumi\OsumiFramework\Tools\OTools"
+  Function: "getPartial"
+
+  Class: "Osumi\OsumiFramework\Core\OComponent"
+  Function: "__toString"
+
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/vendor/osumionline/framework/src/Core/OTemplate.php (Line: 220)"
+  Function: "strval"
+
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/src/Module/ApiModule/Actions/GetMessages/GetMessagesAction.php (Line: 37)"
+  Class: "Osumi\OsumiFramework\Core\OTemplate"
+  Function: "add"
+
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/vendor/osumionline/framework/src/Core/OCore.php (Line: 212)"
+  Class: "Osumi\OsumiFramework\App\Module\ApiModule\Actions\GetMessages\GetMessagesAction"
+  Function: "run"
+
+  File: "/var/www/vhosts/osumi.es/apicasatest.osumi.es/public/index.php (Line: 12)"
+  Class: "Osumi\OsumiFramework\Core\OCore"
+  Function: "run"
+
+
+[2024-09-05 12:49:55] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:49:55] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/Login',
+)
+[2024-09-05 12:49:55] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `email` = 'inigo.gorosabel@gmail.com' 
+[2024-09-05 12:49:56] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 12:49:56] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 12:49:56] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'id',
+    'value' => '1',
+  ),
+  2 => 
+  array (
+    'name' => 'name',
+    'value' => 'Iñigo',
+  ),
+  3 => 
+  array (
+    'name' => 'token',
+    'value' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzI1NjE5Nzk2fQ.612334763c69f4e9480985a6838f0c49da6b706477380174b1071b0bd26d6e12',
+  ),
+  4 => 
+  array (
+    'name' => 'color',
+    'value' => '5b78ec',
+  ),
+  5 => 
+  array (
+    'name' => 'family',
+    'value' => 'null
+',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 12:49:56] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:49:56] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/GetMessages',
+)
+[2024-09-05 12:49:56] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `id` = '1' 
+[2024-09-05 12:49:56] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 12:49:56] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 12:49:56] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'list',
+    'value' => '{
+	"id": 2,
+	"idUser": 1,
+	"body": "Primera+tarea",
+	"type": 1,
+	"done": false,
+	"isPrivate": true,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+	],
+	"date": "31/05/2024 23:46:26",
+	"color": "5b78ec"
+}
+,
+{
+	"id": 1,
+	"idUser": 1,
+	"body": "asd",
+	"type": 0,
+	"done": false,
+	"isPrivate": false,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+,
+{
+	"id": 2,
+	"id_user": 1,
+	"name": "123"
+}
+	],
+	"date": "15/11/2021 18:21:03",
+	"color": "5b78ec"
+}
+',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 12:50:08] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:50:08] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/GetMessage',
+)
+[2024-09-05 12:50:08] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `message` WHERE `id` = '2' 
+[2024-09-05 12:50:08] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `id` = '1' 
+[2024-09-05 12:50:08] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 12:50:08] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 12:50:08] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'message',
+    'value' => '{
+	"id": 2,
+	"idUser": 1,
+	"body": "Primera+tarea",
+	"type": 1,
+	"done": false,
+	"isPrivate": true,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+	],
+	"date": "31/05/2024 23:46:26",
+	"color": "5b78ec"
+}
+',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 12:50:10] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:50:10] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/GetMessages',
+)
+[2024-09-05 12:50:10] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `id` = '1' 
+[2024-09-05 12:50:10] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 12:50:10] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 12:50:10] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'list',
+    'value' => '{
+	"id": 2,
+	"idUser": 1,
+	"body": "Primera+tarea",
+	"type": 1,
+	"done": false,
+	"isPrivate": true,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+	],
+	"date": "31/05/2024 23:46:26",
+	"color": "5b78ec"
+}
+,
+{
+	"id": 1,
+	"idUser": 1,
+	"body": "asd",
+	"type": 0,
+	"done": false,
+	"isPrivate": false,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+,
+{
+	"id": 2,
+	"id_user": 1,
+	"name": "123"
+}
+	],
+	"date": "15/11/2021 18:21:03",
+	"color": "5b78ec"
+}
+',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 12:50:11] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:50:11] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/GetMessage',
+)
+[2024-09-05 12:50:11] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `message` WHERE `id` = '1' 
+[2024-09-05 12:50:11] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `id` = '1' 
+[2024-09-05 12:50:11] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 12:50:11] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 12:50:11] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'message',
+    'value' => '{
+	"id": 1,
+	"idUser": 1,
+	"body": "asd",
+	"type": 0,
+	"done": false,
+	"isPrivate": false,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+,
+{
+	"id": 2,
+	"id_user": 1,
+	"name": "123"
+}
+	],
+	"date": "15/11/2021 18:21:03",
+	"color": "5b78ec"
+}
+',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 12:50:21] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:50:21] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/GetMessages',
+)
+[2024-09-05 12:50:21] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `id` = '1' 
+[2024-09-05 12:50:21] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 12:50:21] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 12:50:21] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'list',
+    'value' => '{
+	"id": 2,
+	"idUser": 1,
+	"body": "Primera+tarea",
+	"type": 1,
+	"done": false,
+	"isPrivate": true,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+	],
+	"date": "31/05/2024 23:46:26",
+	"color": "5b78ec"
+}
+,
+{
+	"id": 1,
+	"idUser": 1,
+	"body": "asd",
+	"type": 0,
+	"done": false,
+	"isPrivate": false,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+,
+{
+	"id": 2,
+	"id_user": 1,
+	"name": "123"
+}
+	],
+	"date": "15/11/2021 18:21:03",
+	"color": "5b78ec"
+}
+',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 12:50:24] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:50:24] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/GetTags',
+)
+[2024-09-05 12:50:24] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 12:50:24] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 12:50:24] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'list',
+    'value' => '{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+,
+{
+	"id": 2,
+	"id_user": 1,
+	"name": "123"
+}
+',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 12:50:49] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 12:50:49] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/GetMessages',
+)
+[2024-09-05 12:50:49] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `id` = '1' 
+[2024-09-05 12:50:49] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 12:50:49] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 12:50:49] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'list',
+    'value' => '{
+	"id": 2,
+	"idUser": 1,
+	"body": "Primera+tarea",
+	"type": 1,
+	"done": false,
+	"isPrivate": true,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+	],
+	"date": "31/05/2024 23:46:26",
+	"color": "5b78ec"
+}
+,
+{
+	"id": 1,
+	"idUser": 1,
+	"body": "asd",
+	"type": 0,
+	"done": false,
+	"isPrivate": false,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+,
+{
+	"id": 2,
+	"id_user": 1,
+	"name": "123"
+}
+	],
+	"date": "15/11/2021 18:21:03",
+	"color": "5b78ec"
+}
+',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 13:14:21] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 13:14:21] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/Login',
+)
+[2024-09-05 13:14:21] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `email` = 'inigo.gorosabel@gmail.com' 
+[2024-09-05 13:14:21] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 13:14:21] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 13:14:21] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'id',
+    'value' => '1',
+  ),
+  2 => 
+  array (
+    'name' => 'name',
+    'value' => 'Iñigo',
+  ),
+  3 => 
+  array (
+    'name' => 'token',
+    'value' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzI1NjIxMjYxfQ.d7bd870aab18f217ec88716e9f0e79c891a4bc5ba37e0ab0f45a9cecf25386bb',
+  ),
+  4 => 
+  array (
+    'name' => 'color',
+    'value' => '5b78ec',
+  ),
+  5 => 
+  array (
+    'name' => 'family',
+    'value' => 'null
+',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 13:14:22] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 13:14:22] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/GetMessages',
+)
+[2024-09-05 13:14:22] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `id` = '1' 
+[2024-09-05 13:14:22] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 13:14:22] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 13:14:22] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'list',
+    'value' => '{
+	"id": 2,
+	"idUser": 1,
+	"body": "Primera+tarea",
+	"type": 1,
+	"done": false,
+	"isPrivate": true,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+	],
+	"date": "31/05/2024 23:46:26",
+	"color": "5b78ec"
+}
+,
+{
+	"id": 1,
+	"idUser": 1,
+	"body": "asd",
+	"type": 0,
+	"done": false,
+	"isPrivate": false,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+,
+{
+	"id": 2,
+	"id_user": 1,
+	"name": "123"
+}
+	],
+	"date": "15/11/2021 18:21:03",
+	"color": "5b78ec"
+}
+',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 13:14:26] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 13:14:26] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/GetMessage',
+)
+[2024-09-05 13:14:26] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `message` WHERE `id` = '1' 
+[2024-09-05 13:14:26] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `id` = '1' 
+[2024-09-05 13:14:26] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 13:14:26] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 13:14:26] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'message',
+    'value' => '{
+	"id": 1,
+	"idUser": 1,
+	"body": "asd",
+	"type": 0,
+	"done": false,
+	"isPrivate": false,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+,
+{
+	"id": 2,
+	"id_user": 1,
+	"name": "123"
+}
+	],
+	"date": "15/11/2021 18:21:03",
+	"color": "5b78ec"
+}
+',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 13:14:29] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 13:14:29] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/GetMessages',
+)
+[2024-09-05 13:14:29] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `id` = '1' 
+[2024-09-05 13:14:29] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 13:14:29] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 13:14:29] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'list',
+    'value' => '{
+	"id": 2,
+	"idUser": 1,
+	"body": "Primera+tarea",
+	"type": 1,
+	"done": false,
+	"isPrivate": true,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+	],
+	"date": "31/05/2024 23:46:26",
+	"color": "5b78ec"
+}
+,
+{
+	"id": 1,
+	"idUser": 1,
+	"body": "asd",
+	"type": 0,
+	"done": false,
+	"isPrivate": false,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+,
+{
+	"id": 2,
+	"id_user": 1,
+	"name": "123"
+}
+	],
+	"date": "15/11/2021 18:21:03",
+	"color": "5b78ec"
+}
+',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 13:14:36] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 13:14:36] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/GetUser',
+)
+[2024-09-05 13:14:36] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `id` = '1' 
+[2024-09-05 13:14:36] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 13:14:36] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 13:14:36] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'id',
+    'value' => '1',
+  ),
+  2 => 
+  array (
+    'name' => 'name',
+    'value' => 'Iñigo',
+  ),
+  3 => 
+  array (
+    'name' => 'email',
+    'value' => 'inigo.gorosabel@gmail.com',
+  ),
+  4 => 
+  array (
+    'name' => 'color',
+    'value' => '5b78ec',
+  ),
+)
+[2024-09-05 13:14:48] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 13:14:48] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/GetMessages',
+)
+[2024-09-05 13:14:48] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `id` = '1' 
+[2024-09-05 13:14:48] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 13:14:48] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 13:14:48] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'list',
+    'value' => '{
+	"id": 2,
+	"idUser": 1,
+	"body": "Primera+tarea",
+	"type": 1,
+	"done": false,
+	"isPrivate": true,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+	],
+	"date": "31/05/2024 23:46:26",
+	"color": "5b78ec"
+}
+,
+{
+	"id": 1,
+	"idUser": 1,
+	"body": "asd",
+	"type": 0,
+	"done": false,
+	"isPrivate": false,
+	"tags": [
+{
+	"id": 1,
+	"id_user": 1,
+	"name": "qwe"
+}
+,
+{
+	"id": 2,
+	"id_user": 1,
+	"name": "123"
+}
+	],
+	"date": "15/11/2021 18:21:03",
+	"color": "5b78ec"
+}
+',
+    'extra' => 'nourlencode',
+  ),
+)
+[2024-09-05 13:14:53] - [DEBUG] - [OSession] - [OSession.php - 39] - setParams - Params:
+[2024-09-05 13:14:53] - [DEBUG] - [OSession] - [OSession.php - 39] - array (
+  'current' => 'ApiModule/GetUser',
+)
+[2024-09-05 13:14:53] - [DEBUG] - [OModel] - [OModel.php - 73] - find - Query: SELECT * FROM `user` WHERE `id` = '1' 
+[2024-09-05 13:14:53] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Type: json
+[2024-09-05 13:14:53] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - process - Params:
+[2024-09-05 13:14:53] - [DEBUG] - [OTemplate] - [OTemplate.php - 64] - array (
+  0 => 
+  array (
+    'name' => 'status',
+    'value' => 'ok',
+  ),
+  1 => 
+  array (
+    'name' => 'id',
+    'value' => '1',
+  ),
+  2 => 
+  array (
+    'name' => 'name',
+    'value' => 'Iñigo',
+  ),
+  3 => 
+  array (
+    'name' => 'email',
+    'value' => 'inigo.gorosabel@gmail.com',
+  ),
+  4 => 
+  array (
+    'name' => 'color',
+    'value' => '5b78ec',
+  ),
+)

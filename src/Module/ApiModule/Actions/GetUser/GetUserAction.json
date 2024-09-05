@@ -1,0 +1,10 @@
+{
+	"status": "{{status}}",
+	"user": {
+		"id": {{id}},
+		"name": "{{name}}",
+		"email": "{{email}}",
+		"token": "",
+		"color": "{{color}}"
+	}
+}
