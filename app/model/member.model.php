@@ -46,6 +46,6 @@ class Member extends OModel {
 			)
 		);
 
-		parent::load(model);
+		parent::load($model);
 	}
 }

@@ -12,7 +12,7 @@ use OsumiFramework\OFW\Web\ORequest;
 )]
 class notFoundAction extends OAction {
 	/**
-	 * Página de error 404v
+	 * Página de error 404
 	 *
 	 * @param ORequest $req Request object with method, headers, parameters and filters used
 	 * @return void

@@ -3,5 +3,6 @@
 	"id": {{id}},
 	"name": "{{name}}",
 	"token": "{{token}}",
-	"color": "{{color}}"
+	"color": "{{color}}",
+	"family": {{family}}
 }

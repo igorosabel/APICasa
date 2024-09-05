@@ -10,11 +10,11 @@ else{
 ?>
 {
 	"id": <?php echo $values['message']->get('id') ?>,
-	"id_user": <?php echo is_null($values['message']->get('id_user')) ? 'null' : $values['message']->get('id_user') ?>,
+	"idUser": <?php echo is_null($values['message']->get('id_user')) ? 'null' : $values['message']->get('id_user') ?>,
 	"body": "<?php echo urlencode($values['message']->get('body')) ?>",
 	"type": <?php echo $values['message']->get('type') ?>,
 	"done": <?php echo $values['message']->get('done') ? 'true' : 'false' ?>,
-	"is_private": <?php echo $values['message']->get('is_private') ? 'true' : 'false' ?>,
+	"isPrivate": <?php echo $values['message']->get('is_private') ? 'true' : 'false' ?>,
 	"tags": [
 <?php	echo $tag_list_component ?>
 	],

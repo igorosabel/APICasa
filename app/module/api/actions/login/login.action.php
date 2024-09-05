@@ -7,6 +7,7 @@ use OsumiFramework\OFW\Routing\OAction;
 use OsumiFramework\OFW\Plugins\OToken;
 use OsumiFramework\App\DTO\UserLoginDTO;
 use OsumiFramework\App\Model\User;
+use OsumiFramework\App\Component\Model\FamilyComponent;
 
 #[OModuleAction(
 	url: '/login'
@@ -24,6 +25,7 @@ class loginAction extends OAction {
 		$name   = '';
 		$token  = '';
 		$color  = '';
+		$family_component = new FamilyComponent(['family' => null]);
 
 		if (!$data->isValid()) {
 			$status = 'error';
@@ -39,6 +41,7 @@ class loginAction extends OAction {
 				$id = $user->get('id');
 				$name = $user->get('name');
 				$color = $user->get('color');
+				$family_component->setValue('family', $user->getFamily());
 
 				$tk = new OToken($this->getConfig()->getExtra('secret'));
 				$tk->addParam('id',    $id);
@@ -55,5 +58,6 @@ class loginAction extends OAction {
 		$this->getTemplate()->add('name',   $name);
 		$this->getTemplate()->add('token',  $token);
 		$this->getTemplate()->add('color',  $color);
+		$this->getTemplate()->add('family', $family_component);
 	}
 }

@@ -93,4 +93,49 @@ class User extends OModel {
 	public function checkPass(string $pass): bool {
 		return password_verify($pass, $this->get('pass'));
 	}
+
+	private ?Family $family = null;
+	private bool $family_checked = false;
+
+	/**
+	 * Obtiene la familia a la que pertenece un usuario
+	 *
+	 * @return Family Familia a la que pertenece el usuario
+	 */
+	public function getFamily(): ?Family {
+		if (!$this->family_checked) {
+			$this->loadFamily();
+		}
+		return $this->family;
+	}
+
+	/**
+	 * Guarda la familia del usuario
+	 *
+	 * @param Family $family Familia del usuario
+	 *
+	 * @return void
+	 */
+	public function setFamily(Family $family):  void {
+		$this->family = $family;
+	}
+
+	/**
+	 * Carga la familia del usuario
+	 *
+	 * @return void
+	 */
+	public function loadFamily(): void {
+		$sql = "SELECT * FROM `family` WHERE `id` IN (SELECT `id_family` FROM `member` WHERE `id_user` = ?)";
+		$this->db->query($sql, [$this->get('id')]);
+
+		if ($res = $this->db->next()) {
+			$family = new Family();
+			$family->update($res);
+
+			$this->setFamily($family);
+		}
+
+		$this->family_checked = true;
+	}
 }

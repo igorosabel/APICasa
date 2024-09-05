@@ -39,6 +39,6 @@ class MessageTag extends OModel {
 			)
 		);
 
-		parent::load(model);
+		parent::load($model);
 	}
 }
