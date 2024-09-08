@@ -11,6 +11,8 @@ use Osumi\OsumiFramework\App\DTO\NewPassDTO;
 	services: ['Web', 'Email']
 )]
 class NewPasswordAction extends OAction {
+	public string $status = 'ok';
+
 	/**
 	 * Función para cambiar la contraseña de un usuario
 	 *
@@ -18,16 +20,14 @@ class NewPasswordAction extends OAction {
 	 * @return void
 	 */
 	public function run(NewPassDTO $data):void {
-		$status = 'ok';
-
 		if (!$data->isValid()) {
-			$status = 'error';
+			$this->status = 'error';
 		}
 
-		if ($status=='ok') {
+		if ($this->status=='ok') {
 				$check = $this->service['Web']->checkNewPasswordToken($data->getToken());
-				$status = $check['status'];
-				if ($status == 'ok') {
+				$this->status = $check['status'];
+				if ($this->status == 'ok') {
 					$user = $check['user'];
 					$user->set('pass', password_hash($data->getPass(), PASSWORD_BCRYPT));
 					$user->save();
@@ -35,7 +35,5 @@ class NewPasswordAction extends OAction {
 					$this->service['Email']->sendPasswordChanged($user);
 				}
 		}
-
-		$this->getTemplate()->add('status', $status);
 	}
 }

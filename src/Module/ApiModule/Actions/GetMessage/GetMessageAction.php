@@ -7,13 +7,16 @@ use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
 use Osumi\OsumiFramework\App\Model\Message;
 use Osumi\OsumiFramework\App\Model\User;
-use Osumi\OsumiFramework\App\Component\Model\MessageComponent\MessageComponent;
+use Osumi\OsumiFramework\App\Component\Model\Message\MessageComponent;
 
 #[OModuleAction(
 	url: '/get-message',
 	filters: ['Login']
 )]
 class GetMessageAction extends OAction {
+	public string $status = 'ok';
+	public ?MessageComponent $message = null;
+
 	/**
 	 * Función para obtener un mensaje concreto
 	 *
@@ -21,34 +24,30 @@ class GetMessageAction extends OAction {
 	 * @return void
 	 */
 	public function run(ORequest $req):void {
-		$status  = 'ok';
 		$id      = $req->getParamInt('id');
 		$filter  = $req->getFilter('Login');
-		$message_component = new MessageComponent(['Message' => null]);
+		$this->message = new MessageComponent(['Message' => null]);
 
 		if (is_null($id) || is_null($filter) || $filter['status']=='error') {
-			$status = 'error';
+			$this->status = 'error';
 		}
 
-		if ($status == 'ok') {
+		if ($this->status == 'ok') {
 			$message = new Message();
 			if ($message->find(['id' => $id])) {
 				if ($message->get('id_user') == $filter['id']) {
 					$user = new User();
 					$user->find(['id' => $message->get('id_user')]);
 					$message->setColor($user->get('color'));
-					$message_component->setValue('Message', $message);
+					$this->message->setValue('Message', $message);
 				}
 				else {
-					$status = 'error';
+					$this->status = 'error';
 				}
 			}
 			else {
-				$status = 'error';
+				$this->status = 'error';
 			}
 		}
-
-		$this->getTemplate()->add('status',  $status);
-		$this->getTemplate()->add('message', $message_component);
 	}
 }

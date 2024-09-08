@@ -13,6 +13,8 @@ use Osumi\OsumiFramework\App\Model\Message;
 	services: ['Web']
 )]
 class SaveMessageAction extends OAction {
+	public string $status = 'ok';
+
 	/**
 	 * Función para guardar un mensaje
 	 *
@@ -20,13 +22,11 @@ class SaveMessageAction extends OAction {
 	 * @return void
 	 */
 	public function run(MessageDTO $data):void {
-		$status = 'ok';
-
 		if (!$data->isValid()) {
-			$status = 'error';
+			$this->status = 'error';
 		}
 
-		if ($status=='ok') {
+		if ($this->status=='ok') {
 			$message = new Message();
 			if ($data->getId() != -1) {
 				$message->find(['id' => $data->getId()]);
@@ -45,10 +45,8 @@ class SaveMessageAction extends OAction {
 				$this->service['Web']->updateTags($message, $data->getTagList());
 			}
 			else {
-				$status = 'error';
+				$this->status = 'error';
 			}
 		}
-
-		$this->getTemplate()->add('status', $status);
 	}
 }

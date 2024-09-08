@@ -5,7 +5,7 @@ namespace Osumi\OsumiFramework\App\Module\ApiModule\Actions\GetMessages;
 use Osumi\OsumiFramework\Routing\OModuleAction;
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
-use Osumi\OsumiFramework\App\Component\Model\MessageListComponent\MessageListComponent;
+use Osumi\OsumiFramework\App\Component\Model\MessageList\MessageListComponent;
 
 #[OModuleAction(
 	url: '/get-messages',
@@ -13,6 +13,9 @@ use Osumi\OsumiFramework\App\Component\Model\MessageListComponent\MessageListCom
 	services: ['Web']
 )]
 class GetMessagesAction extends OAction {
+	public string $status = 'ok';
+	public ?MessageListComponent $list = null;
+
 	/**
 	 * Función para obtener la lista de mensajes
 	 *
@@ -20,20 +23,15 @@ class GetMessagesAction extends OAction {
 	 * @return void
 	 */
 	public function run(ORequest $req):void {
-		$status = 'ok';
 		$filter = $req->getFilter('Login');
-		$message_list_component = new MessageListComponent(['list' => []]);
+		$this->list = new MessageListComponent(['list' => []]);
 
 		if (is_null($filter) || $filter['status']=='error') {
-			$status = 'error';
+			$this->status = 'error';
 		}
 
-		if ($status == 'ok') {
-			$list = $this->service['Web']->getMessages($filter['id']);
-			$message_list_component->setValue('list', $list);
+		if ($this->status == 'ok') {
+			$this->list->setValue('list', $this->service['Web']->getMessages($filter['id']));
 		}
-
-		$this->getTemplate()->add('status', $status);
-		$this->getTemplate()->add('list',   $message_list_component);
 	}
 }

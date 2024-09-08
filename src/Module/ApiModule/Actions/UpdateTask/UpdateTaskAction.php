@@ -12,6 +12,8 @@ use Osumi\OsumiFramework\App\Model\Message;
 	filters: ['Login']
 )]
 class UpdateTaskAction extends OAction {
+	public string $status = 'ok';
+
 	/**
 	 * Función para actualizar el estado de una tarea
 	 *
@@ -19,15 +21,14 @@ class UpdateTaskAction extends OAction {
 	 * @return void
 	 */
 	public function run(ORequest $req):void {
-		$status = 'ok';
 		$id     = $req->getParamInt('id');
 		$filter = $req->getFilter('Login');
 
 		if (is_null($id) || is_null($filter) || $filter['status']=='error') {
-			$status = 'error';
+			$this->status = 'error';
 		}
 
-		if ($status == 'ok') {
+		if ($this->status == 'ok') {
 			$message = new Message();
 			if ($message->find(['id' => $id])) {
 				if ($message->get('id_user') == $filter['id']) {
@@ -35,14 +36,12 @@ class UpdateTaskAction extends OAction {
 					$message->save();
 				}
 				else {
-					$status = 'error';
+					$this->status = 'error';
 				}
 			}
 			else {
-				$status = 'error';
+				$this->status = 'error';
 			}
 		}
-
-		$this->getTemplate()->add('status', $status);
 	}
 }

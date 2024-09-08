@@ -5,7 +5,7 @@ namespace Osumi\OsumiFramework\App\Module\ApiModule\Actions\GetTags;
 use Osumi\OsumiFramework\Routing\OModuleAction;
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
-use Osumi\OsumiFramework\App\Component\Model\TagListComponent\TagListComponent;
+use Osumi\OsumiFramework\App\Component\Model\TagList\TagListComponent;
 
 #[OModuleAction(
 	url: '/get-tags',
@@ -13,6 +13,9 @@ use Osumi\OsumiFramework\App\Component\Model\TagListComponent\TagListComponent;
 	services: ['Web']
 )]
 class GetTagsAction extends OAction {
+	public string $status = 'ok';
+	public ?TagListComponent $list = null;
+
 	/**
 	 * Función para obtener la lista de tags de un usuario
 	 *
@@ -20,20 +23,15 @@ class GetTagsAction extends OAction {
 	 * @return void
 	 */
 	public function run(ORequest $req):void {
-		$status = 'ok';
 		$filter = $req->getFilter('Login');
-		$tag_list_component = new TagListComponent(['list' => []]);
+		$this->list = new TagListComponent(['list' => []]);
 
 		if (is_null($filter) || $filter['status']=='error') {
-			$status = 'error';
+			$this->status = 'error';
 		}
 
-		if ($status=='ok') {
-				$list = $this->service['Web']->getUserTags($filter['id']);
-				$tag_list_component->setValue('list', $list);
+		if ($this->status=='ok') {
+				$this->list->setValue('list', $this->service['Web']->getUserTags($filter['id']));
 		}
-
-		$this->getTemplate()->add('status', $status);
-		$this->getTemplate()->add('list',   $tag_list_component);
 	}
 }

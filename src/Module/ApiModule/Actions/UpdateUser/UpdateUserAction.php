@@ -12,6 +12,8 @@ use Osumi\OsumiFramework\App\Model\User;
 	filters: ['Login']
 )]
 class UpdateUserAction extends OAction {
+	public string $status = 'ok';
+
 	/**
 	 * Función para actualizar los datos de perfil de un usuario
 	 *
@@ -19,13 +21,11 @@ class UpdateUserAction extends OAction {
 	 * @return void
 	 */
 	public function run(UserUpdateDTO $data):void {
-		$status = 'ok';
-
 		if (!$data->isValid()) {
-			$status = 'error';
+			$this->status = 'error';
 		}
 
-		if ($status == 'ok') {
+		if ($this->status == 'ok') {
 			$user = new User();
 			$user->find(['id' => $data->getId()]);
 
@@ -35,7 +35,5 @@ class UpdateUserAction extends OAction {
 
 			$user->save();
 		}
-
-		$this->getTemplate()->add('status', $status);
 	}
 }

@@ -14,6 +14,12 @@ use Osumi\OsumiFramework\App\DTO\UserRegisterDTO;
 	url: '/register'
 )]
 class RegisterAction extends OAction {
+	public string $status = 'ok';
+	public int    $id     = -1;
+	public string $name   = '';
+	public string $token  = '';
+	public string $color  = '';
+
 	/**
 	 * Función para registrar un nuevo usuario
 	 *
@@ -21,14 +27,8 @@ class RegisterAction extends OAction {
 	 * @return void
 	 */
 	public function run(UserRegisterDTO $data):void {
-		$status = 'ok';
-		$id     = -1;
-		$name   = '';
-		$token  = '';
-		$color  = '';
-
 		if (!$data->isValid()) {
-			$status = 'error';
+			$this->status = 'error';
 		}
 		else {
 			$email = $data->getEmail();
@@ -36,11 +36,11 @@ class RegisterAction extends OAction {
 			$name  = $data->getName();
 		}
 
-		if ($status=='ok') {
+		if ($this->status=='ok') {
 			$user = new User();
 
 			if ($user->find(['email' => $email])) {
-				$status = 'in-use';
+				$this->status = 'in-use';
 			}
 			else {
 				$user->set('email', $email);
@@ -49,20 +49,15 @@ class RegisterAction extends OAction {
 				$user->set('color', sprintf('%06X', mt_rand(0, 0xFFFFFF)));
 				$user->save();
 
-				$id = $user->get('id');
-				$color = $user->get('color');
+				$this->id = $user->get('id');
+				$this->name = $user->get('name');
+				$this->color = $user->get('color');
 
 				$tk = new OToken($this->getConfig()->getExtra('secret'));
 				$tk->addParam('id',    $id);
 				$tk->addParam('exp',   time() + (24 * 60 * 60));
-				$token = $tk->getToken();
+				$this->token = $tk->getToken();
 			}
 		}
-
-		$this->getTemplate()->add('status', $status);
-		$this->getTemplate()->add('id',     $id);
-		$this->getTemplate()->add('name',   $name);
-		$this->getTemplate()->add('token',  $token);
-		$this->getTemplate()->add('color',  $color);
 	}
 }

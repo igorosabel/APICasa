@@ -1,5 +1,5 @@
 <?php
-use Osumi\OsumiFramework\App\Component\Model\MemberListComponent\MemberListComponent;
+use Osumi\OsumiFramework\App\Component\Model\MemberList\MemberListComponent;
 if (is_null($values['Family'])) {
 ?>
 null

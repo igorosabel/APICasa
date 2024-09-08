@@ -1,5 +1,5 @@
 <?php
-use Osumi\OsumiFramework\App\Component\Model\MessageComponent\MessageComponent;
+use Osumi\OsumiFramework\App\Component\Model\Message\MessageComponent;
 
 foreach ($values['list'] as $i => $Message) {
   $component = new MessageComponent([ 'Message' => $Message ]);

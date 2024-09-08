@@ -11,6 +11,8 @@ use Osumi\OsumiFramework\Web\ORequest;
 	services: ['Web']
 )]
 class CheckPasswordTokenAction extends OAction {
+	public string $status = 'ok';
+
 	/**
 	 * Función para comprobar un token de un email de recuperación
 	 *
@@ -18,18 +20,15 @@ class CheckPasswordTokenAction extends OAction {
 	 * @return void
 	 */
 	public function run(ORequest $req):void {
-		$status = 'ok';
 		$token  = $req->getParamString('token');
 
 		if (is_null($token)) {
-			$status = 'error';
+			$this->status = 'error';
 		}
 
-		if ($status=='ok') {
+		if ($this->status=='ok') {
 				$check = $this->service['Web']->checkNewPasswordToken($token);
-				$status = $check['status'];
+				$this->status = $check['status'];
 		}
-
-		$this->getTemplate()->add('status', $status);
 	}
 }

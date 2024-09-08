@@ -1,5 +1,5 @@
 <?php
-use Osumi\OsumiFramework\App\Component\Model\TagComponent\TagComponent;
+use Osumi\OsumiFramework\App\Component\Model\Tag\TagComponent;
 
 foreach ($values['list'] as $i => $Tag) {
   $component = new TagComponent([ 'Tag' => $Tag ]);

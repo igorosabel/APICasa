@@ -1,5 +1,5 @@
 <?php
-use Osumi\OsumiFramework\App\Component\Model\FamilyComponent\FamilyComponent;
+use Osumi\OsumiFramework\App\Component\Model\Family\FamilyComponent;
 
 foreach ($values['list'] as $i => $Family) {
   $component = new FamilyComponent([ 'Family' => $Family ]);

@@ -12,6 +12,8 @@ use Osumi\OsumiFramework\App\Model\User;
 	filters: ['Login']
 )]
 class UpdatePassAction extends OAction {
+	public string $status = 'ok';
+
 	/**
 	 * Función para actualizar la contraseña de un usuario
 	 *
@@ -19,13 +21,11 @@ class UpdatePassAction extends OAction {
 	 * @return void
 	 */
 	public function run(PassUpdateDTO $data):void {
-		$status = 'ok';
-
 		if (!$data->isValid()) {
-			$status = 'error';
+			$this->status = 'error';
 		}
 
-		if ($status == 'ok') {
+		if ($this->status == 'ok') {
 			$user = new User();
 			$user->find(['id' => $data->getIdToken()]);
 
@@ -34,10 +34,8 @@ class UpdatePassAction extends OAction {
 				$user->save();
 			}
 			else {
-				$status = 'error-pass';
+				$this->status = 'error-pass';
 			}
 		}
-
-		$this->getTemplate()->add('status', $status);
 	}
 }

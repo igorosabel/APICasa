@@ -1,5 +1,5 @@
 <?php
-use Osumi\OsumiFramework\App\Component\Model\TagListComponent\TagListComponent;
+use Osumi\OsumiFramework\App\Component\Model\TagList\TagListComponent;
 if (is_null($values['Message'])) {
 ?>
 null

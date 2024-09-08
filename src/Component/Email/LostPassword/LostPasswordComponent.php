@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Osumi\OsumiFramework\App\Component\Email\LostPasswordComponent;
+namespace Osumi\OsumiFramework\App\Component\Email\LostPassword;
 
 use Osumi\OsumiFramework\Core\OComponent;
 

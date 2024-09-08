@@ -12,6 +12,12 @@ use Osumi\OsumiFramework\App\Model\User;
 	filters: ['Login']
 )]
 class GetUserAction extends OAction {
+	public string $status = 'ok';
+	public int    $id    = -1;
+	public string $name  = '';
+	public string $email = '';
+	public string $color = '';
+
 	/**
 	 * Función para obtener los datos de perfil de un usuario
 	 *
@@ -19,32 +25,20 @@ class GetUserAction extends OAction {
 	 * @return void
 	 */
 	public function run(ORequest $req):void {
-		$status = 'ok';
 		$filter = $req->getFilter('Login');
 
-		$id    = -1;
-		$name  = '';
-		$email = '';
-		$color = '';
-
 		if (is_null($filter) || $filter['status']=='error') {
-			$status = 'error';
+			$this->status = 'error';
 		}
 
-		if ($status == 'ok') {
+		if ($this->status == 'ok') {
 			$user = new User();
 			$user->find(['id' => $filter['id']]);
 
-			$id    = $user->get('id');
-			$name  = $user->get('name');
-			$email = $user->get('email');
-			$color = $user->get('color');
+			$this->id    = $user->get('id');
+			$this->name  = $user->get('name');
+			$this->email = $user->get('email');
+			$this->color = $user->get('color');
 		}
-
-		$this->getTemplate()->add('status', $status);
-		$this->getTemplate()->add('id',     $id);
-		$this->getTemplate()->add('name',   $name);
-		$this->getTemplate()->add('email',  $email);
-		$this->getTemplate()->add('color',  $color);
 	}
 }

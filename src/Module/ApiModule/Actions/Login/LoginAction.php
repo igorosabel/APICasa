@@ -7,12 +7,19 @@ use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Plugins\OToken;
 use Osumi\OsumiFramework\App\Model\User;
 use Osumi\OsumiFramework\App\DTO\UserLoginDTO;
-use Osumi\OsumiFramework\App\Component\Model\FamilyComponent\FamilyComponent;
+use Osumi\OsumiFramework\App\Component\Model\Family\FamilyComponent;
 
 #[OModuleAction(
 	url: '/login'
 )]
 class LoginAction extends OAction {
+	public string $status = 'ok';
+	public int $id        = -1;
+	public string $name   = '';
+	public string $token  = '';
+	public string $color  = '';
+	public ?FamilyComponent $family = null;
+
 	/**
 	 * Función para iniciar sesión en la aplicación
 	 *
@@ -20,44 +27,32 @@ class LoginAction extends OAction {
 	 * @return void
 	 */
 	public function run(UserLoginDTO $data):void {
-		$status = 'ok';
-		$id     = -1;
-		$name   = '';
-		$token  = '';
-		$color  = '';
-		$family_component = new FamilyComponent(['Family' => null]);
+		$this->family = new FamilyComponent(['Family' => null]);
 
 		if (!$data->isValid()) {
-			$status = 'error';
+			$this->status = 'error';
 		}
 		else {
 			$email = $data->getEmail();
 			$pass  = $data->getPass();
 		}
 
-		if ($status=='ok') {
+		if ($this->status=='ok') {
 			$user = new User();
 			if ($user->login($email, $pass)) {
-				$id = $user->get('id');
-				$name = $user->get('name');
-				$color = $user->get('color');
-				$family_component->setValue('Family', $user->getFamily());
+				$this->id = $user->get('id');
+				$this->name = $user->get('name');
+				$this->color = $user->get('color');
+				$this->family->setValue('Family', $user->getFamily());
 
 				$tk = new OToken($this->getConfig()->getExtra('secret'));
-				$tk->addParam('id',    $id);
+				$tk->addParam('id',    $this->id);
 				$tk->addParam('exp',   time() + (24 * 60 * 60));
-				$token = $tk->getToken();
+				$this->token = $tk->getToken();
 			}
 			else {
-				$status = 'error';
+				$this->status = 'error';
 			}
 		}
-
-		$this->getTemplate()->add('status', $status);
-		$this->getTemplate()->add('id',     $id);
-		$this->getTemplate()->add('name',   $name);
-		$this->getTemplate()->add('token',  $token);
-		$this->getTemplate()->add('color',  $color);
-		$this->getTemplate()->add('family', $family_component);
 	}
 }
