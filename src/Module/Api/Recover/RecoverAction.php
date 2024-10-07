@@ -4,10 +4,17 @@ namespace Osumi\OsumiFramework\App\Module\Api\Recover;
 
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
+use Osumi\OsumiFramework\App\Service\EmailService;
 use Osumi\OsumiFramework\App\Model\User;
 
 class RecoverAction extends OAction {
+	private ?EmailService $es = null;
+
 	public string $status = 'ok';
+
+	public function __construct() {
+		$this->es = inject(EmailService::class);
+	}
 
 	/**
 	 * Función para obtener un enlace de recuperación de contraseña
@@ -22,11 +29,11 @@ class RecoverAction extends OAction {
 			$this->status = 'error';
 		}
 
-		if ($this->status=='ok') {
+		if ($this->status === 'ok') {
 			$user = new User();
 
 			if ($user->find(['email' => $email])) {
-				$this->service['Email']->sendLostPassword($user);
+				$this->es->sendLostPassword($user);
 			}
 		}
 	}

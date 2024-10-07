@@ -4,9 +4,16 @@ namespace Osumi\OsumiFramework\App\Module\Api\CheckPasswordToken;
 
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
+use Osumi\OsumiFramework\App\Service\WebService;
 
 class CheckPasswordTokenAction extends OAction {
+	private ?WebService $ws = null;
+
 	public string $status = 'ok';
+
+	public function __construct() {
+		$this->ws = inject(WebService::class);
+	}
 
 	/**
 	 * Función para comprobar un token de un email de recuperación
@@ -21,8 +28,8 @@ class CheckPasswordTokenAction extends OAction {
 			$this->status = 'error';
 		}
 
-		if ($this->status=='ok') {
-				$check = $this->service['Web']->checkNewPasswordToken($token);
+		if ($this->status === 'ok') {
+				$check = $this->ws->checkNewPasswordToken($token);
 				$this->status = $check['status'];
 		}
 	}

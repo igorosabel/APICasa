@@ -4,9 +4,19 @@ namespace Osumi\OsumiFramework\App\Module\Api\NewPassword;
 
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\App\DTO\NewPassDTO;
+use Osumi\OsumiFramework\App\Service\WebService;
+use Osumi\OsumiFramework\App\Service\EmailService;
 
 class NewPasswordAction extends OAction {
+	private ?WebService $ws = null;
+	private ?EmailService $es = null;
+
 	public string $status = 'ok';
+
+	public function __construct() {
+		$this->ws = inject(WebService::class);
+		$this->es = inject(EmailService::class);
+	}
 
 	/**
 	 * Función para cambiar la contraseña de un usuario
@@ -19,16 +29,16 @@ class NewPasswordAction extends OAction {
 			$this->status = 'error';
 		}
 
-		if ($this->status=='ok') {
-				$check = $this->service['Web']->checkNewPasswordToken($data->getToken());
-				$this->status = $check['status'];
-				if ($this->status == 'ok') {
-					$user = $check['user'];
-					$user->set('pass', password_hash($data->getPass(), PASSWORD_BCRYPT));
-					$user->save();
+		if ($this->status === 'ok') {
+			$check = $this->ws->checkNewPasswordToken($data->getToken());
+			$this->status = $check['status'];
+			if ($this->status === 'ok') {
+				$user = $check['user'];
+				$user->set('pass', password_hash($data->getPass(), PASSWORD_BCRYPT));
+				$user->save();
 
-					$this->service['Email']->sendPasswordChanged($user);
-				}
+				$this->es->sendPasswordChanged($user);
+			}
 		}
 	}
 }

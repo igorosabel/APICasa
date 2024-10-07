@@ -5,6 +5,7 @@
 		"name": "{{name}}",
 		"email": "{{email}}",
 		"token": "",
-		"color": "{{color}}"
+		"color": "{{color}}",
+		"family": {{family}}
 	}
 }

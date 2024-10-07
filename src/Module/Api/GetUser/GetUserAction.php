@@ -5,6 +5,7 @@ namespace Osumi\OsumiFramework\App\Module\Api\GetUser;
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
 use Osumi\OsumiFramework\App\Model\User;
+use Osumi\OsumiFramework\App\Component\Model\Family\FamilyComponent;
 
 class GetUserAction extends OAction {
 	public string $status = 'ok';
@@ -12,6 +13,7 @@ class GetUserAction extends OAction {
 	public string $name  = '';
 	public string $email = '';
 	public string $color = '';
+	public ?FamilyComponent $family = null;
 
 	/**
 	 * Función para obtener los datos de perfil de un usuario
@@ -21,6 +23,7 @@ class GetUserAction extends OAction {
 	 */
 	public function run(ORequest $req):void {
 		$filter = $req->getFilter('Login');
+		$this->family = new FamilyComponent(['Family' => null]);
 
 		if (is_null($filter) || $filter['status']=='error') {
 			$this->status = 'error';
@@ -34,6 +37,7 @@ class GetUserAction extends OAction {
 			$this->name  = $user->get('name');
 			$this->email = $user->get('email');
 			$this->color = $user->get('color');
+			$this->family->setValue('Family', $user->getFamily());
 		}
 	}
 }
