@@ -3,5 +3,8 @@
 namespace Osumi\OsumiFramework\App\Component\Model\Family;
 
 use Osumi\OsumiFramework\Core\OComponent;
+use Osumi\OsumiFramework\App\Model\Family;
 
-class FamilyComponent extends OComponent {}
+class FamilyComponent extends OComponent {
+  public ?Family $family = null;
+}

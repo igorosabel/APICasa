@@ -2,11 +2,11 @@
 
 namespace Osumi\OsumiFramework\App\Module\Api\UpdateUser;
 
-use Osumi\OsumiFramework\Routing\OAction;
+use Osumi\OsumiFramework\Core\OComponent;
 use Osumi\OsumiFramework\App\DTO\UserUpdateDTO;
 use Osumi\OsumiFramework\App\Model\User;
 
-class UpdateUserAction extends OAction {
+class UpdateUserComponent extends OComponent {
 	public string $status = 'ok';
 
 	/**

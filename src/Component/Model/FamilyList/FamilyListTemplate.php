@@ -1,10 +1,10 @@
 <?php
 use Osumi\OsumiFramework\App\Component\Model\Family\FamilyComponent;
 
-foreach ($values['list'] as $i => $Family) {
-  $component = new FamilyComponent([ 'Family' => $Family ]);
+foreach ($list as $i => $family) {
+  $component = new FamilyComponent([ 'family' => $family ]);
 	echo strval($component);
-	if ($i<count($values['list'])-1) {
+	if ($i < count($list) - 1) {
 		echo ",\n";
 	}
 }

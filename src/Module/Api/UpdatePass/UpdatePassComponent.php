@@ -2,11 +2,11 @@
 
 namespace Osumi\OsumiFramework\App\Module\Api\UpdatePass;
 
-use Osumi\OsumiFramework\Routing\OAction;
+use Osumi\OsumiFramework\Core\OComponent;
 use Osumi\OsumiFramework\App\DTO\PassUpdateDTO;
 use Osumi\OsumiFramework\App\Model\User;
 
-class UpdatePassAction extends OAction {
+class UpdatePassComponent extends OComponent {
 	public string $status = 'ok';
 
 	/**

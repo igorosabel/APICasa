@@ -2,17 +2,18 @@
 
 namespace Osumi\OsumiFramework\App\Module\Api\SaveMessage;
 
-use Osumi\OsumiFramework\Routing\OAction;
+use Osumi\OsumiFramework\Core\OComponent;
 use Osumi\OsumiFramework\App\DTO\MessageDTO;
 use Osumi\OsumiFramework\App\Service\WebService;
 use Osumi\OsumiFramework\App\Model\Message;
 
-class SaveMessageAction extends OAction {
+class SaveMessageComponent extends OComponent {
 	private ?WebService $ws = null;
 
 	public string $status = 'ok';
 
 	public function __construct() {
+    parent::__construct();
 		$this->ws = inject(WebService::class);
 	}
 

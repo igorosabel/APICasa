@@ -2,13 +2,13 @@
 
 namespace Osumi\OsumiFramework\App\Module\Api\Login;
 
-use Osumi\OsumiFramework\Routing\OAction;
+use Osumi\OsumiFramework\Core\OComponent;
 use Osumi\OsumiFramework\Plugins\OToken;
 use Osumi\OsumiFramework\App\Model\User;
 use Osumi\OsumiFramework\App\DTO\UserLoginDTO;
 use Osumi\OsumiFramework\App\Component\Model\Family\FamilyComponent;
 
-class LoginAction extends OAction {
+class LoginComponent extends OComponent {
 	public string $status = 'ok';
 	public int $id        = -1;
 	public string $name   = '';
@@ -23,7 +23,7 @@ class LoginAction extends OAction {
 	 * @return void
 	 */
 	public function run(UserLoginDTO $data):void {
-		$this->family = new FamilyComponent(['Family' => null]);
+		$this->family = new FamilyComponent();
 
 		if (!$data->isValid()) {
 			$this->status = 'error';
@@ -39,7 +39,7 @@ class LoginAction extends OAction {
 				$this->id = $user->get('id');
 				$this->name = $user->get('name');
 				$this->color = $user->get('color');
-				$this->family->setValue('Family', $user->getFamily());
+				$this->family->family = $user->getFamily();
 
 				$tk = new OToken($this->getConfig()->getExtra('secret'));
 				$tk->addParam('id',    $this->id);

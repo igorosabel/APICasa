@@ -5,7 +5,7 @@
 		<title>Recuperar contraseña</title>
 	</head>
 	<body>
-		<p>¡Hola <?php echo $values['name'] ?>!</p>
+		<p>¡Hola <?php echo $name ?>!</p>
 
     <p>Tu contraseña acaba de ser cambiada. En caso de que hayas sido tu el que la ha cambiado, simplemente ignora este email.</p>
 

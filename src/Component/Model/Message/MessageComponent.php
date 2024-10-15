@@ -3,5 +3,8 @@
 namespace Osumi\OsumiFramework\App\Component\Model\Message;
 
 use Osumi\OsumiFramework\Core\OComponent;
+use Osumi\OsumiFramework\App\Model\Message;
 
-class MessageComponent extends OComponent {}
+class MessageComponent extends OComponent {
+  public ?Message $message = null;
+}

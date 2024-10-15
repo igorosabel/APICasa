@@ -2,18 +2,19 @@
 
 namespace Osumi\OsumiFramework\App\Module\Api\NewPassword;
 
-use Osumi\OsumiFramework\Routing\OAction;
+use Osumi\OsumiFramework\Core\OComponent;
 use Osumi\OsumiFramework\App\DTO\NewPassDTO;
 use Osumi\OsumiFramework\App\Service\WebService;
 use Osumi\OsumiFramework\App\Service\EmailService;
 
-class NewPasswordAction extends OAction {
+class NewPasswordComponent extends OComponent {
 	private ?WebService $ws = null;
 	private ?EmailService $es = null;
 
 	public string $status = 'ok';
 
 	public function __construct() {
+    parent::__construct();
 		$this->ws = inject(WebService::class);
 		$this->es = inject(EmailService::class);
 	}

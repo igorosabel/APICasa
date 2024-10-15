@@ -2,17 +2,18 @@
 
 namespace Osumi\OsumiFramework\App\Module\Api\Recover;
 
-use Osumi\OsumiFramework\Routing\OAction;
+use Osumi\OsumiFramework\Core\OComponent;
 use Osumi\OsumiFramework\Web\ORequest;
 use Osumi\OsumiFramework\App\Service\EmailService;
 use Osumi\OsumiFramework\App\Model\User;
 
-class RecoverAction extends OAction {
+class RecoverComponent extends OComponent {
 	private ?EmailService $es = null;
 
 	public string $status = 'ok';
 
 	public function __construct() {
+    parent::__construct();
 		$this->es = inject(EmailService::class);
 	}
 

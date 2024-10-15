@@ -4,4 +4,6 @@ namespace Osumi\OsumiFramework\App\Component\Model\MessageList;
 
 use Osumi\OsumiFramework\Core\OComponent;
 
-class MessageListComponent extends OComponent {}
+class MessageListComponent extends OComponent {
+  public array $list = [];
+}

@@ -4,4 +4,7 @@ namespace Osumi\OsumiFramework\App\Component\Email\LostPassword;
 
 use Osumi\OsumiFramework\Core\OComponent;
 
-class LostPasswordComponent extends OComponent {}
+class LostPasswordComponent extends OComponent {
+  public ?string $name = null;
+  public ?string $token = null;
+}

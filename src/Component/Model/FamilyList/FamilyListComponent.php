@@ -4,4 +4,6 @@ namespace Osumi\OsumiFramework\App\Component\Model\FamilyList;
 
 use Osumi\OsumiFramework\Core\OComponent;
 
-class FamilyListComponent extends OComponent {}
+class FamilyListComponent extends OComponent {
+  public array $list = [];
+}

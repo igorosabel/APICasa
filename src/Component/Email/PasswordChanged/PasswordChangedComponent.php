@@ -4,4 +4,6 @@ namespace Osumi\OsumiFramework\App\Component\Email\PasswordChanged;
 
 use Osumi\OsumiFramework\Core\OComponent;
 
-class PasswordChangedComponent extends OComponent {}
+class PasswordChangedComponent extends OComponent {
+  public ?string $name = null;
+}

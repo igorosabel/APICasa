@@ -1,25 +1,26 @@
 <?php declare(strict_types=1);
 
-namespace Osumi\OsumiFramework\App\Module\Api\GetMessages;
+namespace Osumi\OsumiFramework\App\Module\Api\GetTags;
 
-use Osumi\OsumiFramework\Routing\OAction;
+use Osumi\OsumiFramework\Core\OComponent;
 use Osumi\OsumiFramework\Web\ORequest;
 use Osumi\OsumiFramework\App\Service\WebService;
-use Osumi\OsumiFramework\App\Component\Model\MessageList\MessageListComponent;
+use Osumi\OsumiFramework\App\Component\Model\TagList\TagListComponent;
 
-class GetMessagesAction extends OAction {
+class GetTagsComponent extends OComponent {
 	private ?WebService $ws = null;
 
 	public string $status = 'ok';
-	public ?MessageListComponent $list = null;
+	public ?TagListComponent $list = null;
 
 	public function __construct() {
+    parent::__construct();
 		$this->ws = inject(WebService::class);
-		$this->list = new MessageListComponent(['list' => []]);
+		$this->list = new TagListComponent();
 	}
 
 	/**
-	 * Función para obtener la lista de mensajes
+	 * Función para obtener la lista de tags de un usuario
 	 *
 	 * @param ORequest $req Request object with method, headers, parameters and filters used
 	 * @return void
@@ -32,7 +33,7 @@ class GetMessagesAction extends OAction {
 		}
 
 		if ($this->status === 'ok') {
-			$this->list->setValue('list', $this->ws->getMessages($filter['id']));
+				$this->list->list = $this->ws->getUserTags($filter['id']);
 		}
 	}
 }
