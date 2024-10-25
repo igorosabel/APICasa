@@ -109,15 +109,11 @@ class WebService extends OService {
 	 * @return array Lista de mensajes
 	 */
 	public function getMessages(int $id_user): array {
-		$db = new ODB();
-		$sql = "SELECT * FROM `message` WHERE `id_user` = ? ORDER BY `updated_at` DESC";
-		$db->query($sql, [$id_user]);
+		$messages = Message::where(['id_user' => $id_user], ['updated_at#desc']);
 		$list = [];
 		$user_list = [];
 
-		while ($res = $db->next()) {
-			$message = Message::from($res);
-
+		foreach ($messages as $message) {
 			if (!array_key_exists('user_' . $message->id_user, $user_list)) {
 				$user = User::findOne(['id' => $message->id_user]);
 				$user_list['user_' . $message->id_user] = $user;
