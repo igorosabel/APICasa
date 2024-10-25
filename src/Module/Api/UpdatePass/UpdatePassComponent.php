@@ -15,17 +15,16 @@ class UpdatePassComponent extends OComponent {
 	 * @param PassUpdateDTO $data Objeto con la contraseña actual y nueva del usuario
 	 * @return void
 	 */
-	public function run(PassUpdateDTO $data):void {
+	public function run(PassUpdateDTO $data): void {
 		if (!$data->isValid()) {
 			$this->status = 'error';
 		}
 
-		if ($this->status == 'ok') {
-			$user = new User();
-			$user->find(['id' => $data->getIdToken()]);
+		if ($this->status === 'ok') {
+			$user = User::findOne(['id' => $data->getIdToken()]);
 
-			if ($user->checkPass($data->getCurrent())) {
-				$user->set('pass', password_hash($data->getNewPass(), PASSWORD_BCRYPT));
+			if (!is_null($user) && $user->checkPass($data->getCurrent())) {
+				$user->pass = password_hash($data->getNewPass(), PASSWORD_BCRYPT);
 				$user->save();
 			}
 			else {

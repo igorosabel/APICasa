@@ -2,58 +2,46 @@
 
 namespace Osumi\OsumiFramework\App\Model;
 
-use Osumi\OsumiFramework\DB\OModel;
-use Osumi\OsumiFramework\DB\OModelGroup;
-use Osumi\OsumiFramework\DB\OModelField;
-use Osumi\OsumiFramework\App\Model\Item;
+use Osumi\OsumiFramework\ORM\OModel;
+use Osumi\OsumiFramework\ORM\OPK;
+use Osumi\OsumiFramework\ORM\OField;
+use Osumi\OsumiFramework\ORM\OCreatedAt;
+use Osumi\OsumiFramework\ORM\OUpdatedAt;
 
 class Invite extends OModel {
-	/**
-	 * Configures current model object based on data-base table structure
-	 */	function __construct() {
-		$model = new OModelGroup(
-			new OModelField(
-				name: 'id',
-				type: OMODEL_PK,
-				comment: 'Id unico de cada relacion'
-			),
-			new OModelField(
-				name: 'from',
-				type: OMODEL_NUM,
-				nullable: false,
-				default: null,
-				ref: 'user.id',
-				comment: 'Id del usuario que manda la invitacion'
-			),
-			new OModelField(
-				name: 'to',
-				type: OMODEL_NUM,
-				nullable: false,
-				default: null,
-				ref: 'user.id',
-				comment: 'Id del usuario al que se le manda la invitacion'
-			),
-			new OModelField(
-				name: 'accepted',
-				type: OMODEL_BOOL,
-				nullable: false,
-				default: false,
-				comment: 'Indica si la invitacion se ha aceptado 1 o no 0'
-			),
-			new OModelField(
-				name: 'created_at',
-				type: OMODEL_CREATED,
-				comment: 'Fecha de creación del registro'
-			),
-			new OModelField(
-				name: 'updated_at',
-				type: OMODEL_UPDATED,
-				nullable: true,
-				default: null,
-				comment: 'Fecha de última modificación del registro'
-			)
-		);
+	#[OPK(
+		comment: 'Id unico de cada relacion'
+	)]
+	public ?int $id;
 
-		parent::load($model);
-	}
+	#[OField(
+		comment: 'Id del usuario que manda la invitacion',
+		nullable: false,
+		ref: 'user.id'
+	)]
+	public ?int $from;
+
+	#[OField(
+		comment: 'Id del usuario al que se le manda la invitacion',
+		nullable: false,
+		ref: 'user.id'
+	)]
+	public ?int $to;
+
+	#[OField(
+		comment: 'Indica si la invitacion se ha aceptado 1 o no 0',
+		nullable: false,
+		default: false,
+	)]
+	public ?bool $accepted;
+
+	#[OCreatedAt(
+		comment: 'Fecha de creación del registro'
+	)]
+	public ?string $created_at;
+
+	#[OUpdatedAt(
+		comment: 'Fecha de última modificación del registro'
+	)]
+	public ?string $updated_at;
 }

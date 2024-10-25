@@ -31,9 +31,9 @@ class RecoverComponent extends OComponent {
 		}
 
 		if ($this->status === 'ok') {
-			$user = new User();
+			$user = User::findOne(['email' => $email]);
 
-			if ($user->find(['email' => $email])) {
+			if (!is_null($user)) {
 				$this->es->sendLostPassword($user);
 			}
 		}

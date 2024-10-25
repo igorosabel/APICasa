@@ -22,7 +22,7 @@ class CheckPasswordTokenComponent extends OComponent {
 	 * @param ORequest $req Request object with method, headers, parameters and filters used
 	 * @return void
 	 */
-	public function run(ORequest $req):void {
+	public function run(ORequest $req): void {
 		$token  = $req->getParamString('token');
 
 		if (is_null($token)) {

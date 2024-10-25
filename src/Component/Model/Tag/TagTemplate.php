@@ -2,8 +2,8 @@
 null
 <?php else: ?>
 {
-	"id": <?php echo $tag->get('id') ?>,
-	"id_user": <?php echo $tag->get('id_user') ?>,
-	"name": "<?php echo urlencode($tag->get('name')) ?>"
+	"id": <?php echo $tag->id ?>,
+	"id_user": <?php echo $tag->id_user ?>,
+	"name": "<?php echo urlencode($tag->name) ?>"
 }
 <?php endif ?>

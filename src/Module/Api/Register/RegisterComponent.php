@@ -22,7 +22,7 @@ class RegisterComponent extends OComponent {
 	 * @param UserRegisterDTO $data Objeto con la información introducida para registrar un nuevo usuario
 	 * @return void
 	 */
-	public function run(UserRegisterDTO $data):void {
+	public function run(UserRegisterDTO $data): void {
 		if (!$data->isValid()) {
 			$this->status = 'error';
 		}
@@ -32,26 +32,27 @@ class RegisterComponent extends OComponent {
 			$name  = $data->getName();
 		}
 
-		if ($this->status=='ok') {
-			$user = new User();
+		if ($this->status === 'ok') {
+			$user = User::findOne(['email' => $email]);
 
-			if ($user->find(['email' => $email])) {
+			if (!is_null($user)) {
 				$this->status = 'in-use';
 			}
 			else {
-				$user->set('email', $email);
-				$user->set('pass',  password_hash($pass, PASSWORD_BCRYPT));
-				$user->set('name', $name);
-				$user->set('color', sprintf('%06X', mt_rand(0, 0xFFFFFF)));
+				$user = User::create();
+				$user->email = $email;
+				$user->pass  = password_hash($pass, PASSWORD_BCRYPT);
+				$user->name  = $name;
+				$user->color = sprintf('%06X', mt_rand(0, 0xFFFFFF));
 				$user->save();
 
-				$this->id = $user->get('id');
-				$this->name = $user->get('name');
-				$this->color = $user->get('color');
+				$this->id    = $user->id;
+				$this->name  = $user->name;
+				$this->color = $user->color;
 
 				$tk = new OToken($this->getConfig()->getExtra('secret'));
-				$tk->addParam('id',    $id);
-				$tk->addParam('exp',   time() + (24 * 60 * 60));
+				$tk->addParam('id',  $this->id);
+				$tk->addParam('exp', time() + (24 * 60 * 60));
 				$this->token = $tk->getToken();
 			}
 		}

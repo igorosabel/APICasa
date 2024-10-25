@@ -21,22 +21,21 @@ class GetUserComponent extends OComponent {
 	 * @param ORequest $req Request object with method, headers, parameters and filters used
 	 * @return void
 	 */
-	public function run(ORequest $req):void {
+	public function run(ORequest $req): void {
 		$filter = $req->getFilter('Login');
 		$this->family = new FamilyComponent();
 
-		if (is_null($filter) || $filter['status']=='error') {
+		if (is_null($filter) || $filter['status'] === 'error') {
 			$this->status = 'error';
 		}
 
-		if ($this->status == 'ok') {
-			$user = new User();
-			$user->find(['id' => $filter['id']]);
+		if ($this->status === 'ok') {
+			$user = User::findOne(['id' => $filter['id']);
 
-			$this->id    = $user->get('id');
-			$this->name  = $user->get('name');
-			$this->email = $user->get('email');
-			$this->color = $user->get('color');
+			$this->id    = $user->id;
+			$this->name  = $user->name;
+			$this->email = $user->email;
+			$this->color = $user->color;
 			$this->family->family = $user->getFamily();
 		}
 	}

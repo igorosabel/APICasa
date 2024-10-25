@@ -2,68 +2,56 @@
 
 namespace Osumi\OsumiFramework\App\Model;
 
-use Osumi\OsumiFramework\DB\OModel;
-use Osumi\OsumiFramework\DB\OModelGroup;
-use Osumi\OsumiFramework\DB\OModelField;
+use Osumi\OsumiFramework\ORM\OModel;
+use Osumi\OsumiFramework\ORM\OPK;
+use Osumi\OsumiFramework\ORM\OField;
+use Osumi\OsumiFramework\ORM\OCreatedAt;
+use Osumi\OsumiFramework\ORM\OUpdatedAt;
+use Osumi\OsumiFramework\ORM\ODB;
 
 class User extends OModel {
-	/**
-	 * Configures current model object based on data-base table structure
-	 */	function __construct() {
-		$model = new OModelGroup(
-			new OModelField(
-				name: 'id',
-				type: OMODEL_PK,
-				comment: 'Id único de cada usuario'
-			),
-			new OModelField(
-				name: 'email',
-				type: OMODEL_TEXT,
-				nullable: false,
-				default: 'null',
-				size: 50,
-				comment: 'Email del usuario'
-			),
-			new OModelField(
-				name: 'pass',
-				type: OMODEL_TEXT,
-				nullable: false,
-				default: 'null',
-				size: 100,
-				comment: 'Contraseña del usuario'
-			),
-			new OModelField(
-				name: 'name',
-				type: OMODEL_TEXT,
-				nullable: false,
-				default: 'null',
-				size: 100,
-				comment: 'Nombre del usuario'
-			),
-			new OModelField(
-				name: 'color',
-				type: OMODEL_TEXT,
-				nullable: false,
-				default: 'null',
-				size: 6,
-				comment: 'Color que identifique al usuario'
-			),
-			new OModelField(
-				name: 'created_at',
-				type: OMODEL_CREATED,
-				comment: 'Fecha de creación del registro'
-			),
-			new OModelField(
-				name: 'updated_at',
-				type: OMODEL_UPDATED,
-				nullable: true,
-				default: null,
-				comment: 'Fecha de última modificación del registro'
-			)
-		);
+	#[OPK(
+		comment: 'Id único de cada usuario'
+	)]
+	public ?int $id;
 
-		parent::load($model);
-	}
+	#[OField(
+		comment: 'Email del usuario',
+		nullable: false,
+		max: 50
+	)]
+	public ?string $email;
+
+	#[OField(
+		comment: 'Contraseña del usuario',
+		nullable: false,
+		max: 100
+	)]
+	public ?string $pass;
+
+	#[OField(
+		comment: 'Nombre del usuario',
+		nullable: false,
+		max: 100
+	)]
+	public ?string $name;
+
+	#[OField(
+		comment: 'Color que identifique al usuario',
+		nullable: false,
+		max: 6
+	)]
+	public ?string $color;
+
+	#[OCreatedAt(
+		comment: 'Fecha de creación del registro'
+	)]
+	public ?string $created_at;
+
+	#[OUpdatedAt(
+		comment: 'Fecha de última modificación del registro'
+	)]
+	public ?string $updated_at;
 
 	/**
 	 * Función para comprobar un inicio de sesión. Primero busca el usuario por su email y luego comprueba su contraseña.
@@ -126,13 +114,12 @@ class User extends OModel {
 	 * @return void
 	 */
 	public function loadFamily(): void {
+		$db = new ODB();
 		$sql = "SELECT * FROM `family` WHERE `id` IN (SELECT `id_family` FROM `member` WHERE `id_user` = ?)";
-		$this->db->query($sql, [$this->get('id')]);
+		$db->query($sql, [$this->id]);
 
-		if ($res = $this->db->next()) {
-			$family = new Family();
-			$family->update($res);
-
+		if ($res = $db->next()) {
+			$family = new Family($res);
 			$this->setFamily($family);
 		}
 

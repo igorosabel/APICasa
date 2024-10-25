@@ -21,14 +21,18 @@ class UpdateUserComponent extends OComponent {
 		}
 
 		if ($this->status == 'ok') {
-			$user = new User();
-			$user->find(['id' => $data->getId()]);
+			$user = User::findOne(['id' => $data->getId()]);
 
-			$user->set('name',  $data->getName());
-			$user->set('email', $data->getEmail());
-			$user->set('color', $data->getColor());
+			if (!is_null($user)) {
+				$user->name  = $data->getName();
+				$user->email = $data->getEmail();
+				$user->color = $data->getColor();
 
-			$user->save();
+				$user->save();
+			}
+			else {
+				$this->status = 'error';
+			}
 		}
 	}
 }

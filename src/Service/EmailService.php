@@ -3,20 +3,13 @@
 namespace Osumi\OsumiFramework\App\Service;
 
 use Osumi\OsumiFramework\Core\OService;
-use Osumi\OsumiFramework\DB\ODB;
-use Osumi\OsumiFramework\Tools\OTools;
 use Osumi\OsumiFramework\Plugins\OEmailSMTP;
 use Osumi\OsumiFramework\Plugins\OToken;
 use Osumi\OsumiFramework\App\Model\User;
+use Osumi\OsumiFramework\Component\Email\LostPassword\LostPasswordComponent;
+use Osumi\OsumiFramework\Component\Email\PasswordChanged\PasswordChangedComponent;
 
 class EmailService extends OService {
-	/**
-	 * Load service tools
-	 */
-	function __construct() {
-		$this->loadService();
-	}
-
 	/**
 	 * Enviar email de recuperación de contraseña
 	 *
@@ -26,21 +19,21 @@ class EmailService extends OService {
 	 */
 	public function sendLostPassword(User $user): void {
 		$tk = new OToken($this->getConfig()->getExtra('secret'));
-		$tk->addParam('id', $user->get('id'));
-		$tk->addParam('email', $user->get('email'));
+		$tk->addParam('id', $user->id);
+		$tk->addParam('email', $user->email);
 		$tk->addParam('date', time());
 		$token = $tk->getToken();
 
-		$message = OTools::getTemplate($this->getConfig()->getDir('app_component').'email/lost_password/lost_password.php', '', [
-			'name'  => $user->get('name'),
+		$message = new LostPasswordComponent([
+			'name'  => $user->name,
 			'token' => urlencode($token)
 		]);
 
 		$email = new OEmailSMTP();
-		$email->addRecipient($user->get('email'));
+		$email->addRecipient($user->email);
 		$email->setFrom($this->getConfig()->getAdminEmail(), 'Casa');
 		$email->setSubject('Recuperar contraseña');
-		$email->setMessage($message);
+		$email->setMessage(strval($message));
 
 		$email->send();
 	}
@@ -53,15 +46,13 @@ class EmailService extends OService {
 	 * @return void
 	 */
 	public function sendPasswordChanged(User $user): void {
-		$message = OTools::getTemplate($this->getConfig()->getDir('app_component').'email/password_changed/password_changed.php', '', [
-			'name'  => $user->get('name')
-		]);
+		$message = new PasswordChangedComponent(['name' => $user->name]);
 
 		$email = new OEmailSMTP();
-		$email->addRecipient($user->get('email'));
+		$email->addRecipient($user->email);
 		$email->setFrom($this->getConfig()->getAdminEmail(), 'Casa');
 		$email->setSubject('Contraseña cambiada');
-		$email->setMessage($message);
+		$email->setMessage(strval($message));
 
 		$email->send();
 	}

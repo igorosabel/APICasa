@@ -23,25 +23,25 @@ class SaveMessageComponent extends OComponent {
 	 * @param MessageDTO $data Datos del mensaje a guardar
 	 * @return void
 	 */
-	public function run(MessageDTO $data):void {
+	public function run(MessageDTO $data): void {
 		if (!$data->isValid()) {
 			$this->status = 'error';
 		}
 
 		if ($this->status === 'ok') {
-			$message = new Message();
 			if ($data->getId() !== -1) {
-				$message->find(['id' => $data->getId()]);
+				$message = Message::findOne(['id' => $data->getId()]);
 			}
 			else {
-				$message->set('id_user', $data->getIdUser());
+				$message = Message::create();
+				$message->id_user = $data->getIdUser();
 			}
-			if ($message->get('id_user') === $data->getIdUser()) {
-				$message->set('type', $data->getType());
-				$message->set('body', $data->getBody());
-				$message->set('done', $data->getDone());
-				$message->set('is_private', $data->getIsPrivate());
-				$message->set('color', $data->getColor());
+			if ($message->id_user === $data->getIdUser()) {
+				$message->type       = $data->getType();
+				$message->body       = $data->getBody();
+				$message->done       = $data->getDone();
+				$message->is_private = $data->getIsPrivate();
+				$message->color      = $data->getColor();
 				$message->save();
 
 				$this->ws->updateTags($message, $data->getTagList());

@@ -25,7 +25,7 @@ class NewPasswordComponent extends OComponent {
 	 * @param NewPassDTO $data Nueva contraseña y token de un usuario
 	 * @return void
 	 */
-	public function run(NewPassDTO $data):void {
+	public function run(NewPassDTO $data): void {
 		if (!$data->isValid()) {
 			$this->status = 'error';
 		}

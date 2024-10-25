@@ -2,7 +2,7 @@
 null
 <?php else: ?>
 {
-	"idUser": <?php echo is_null($member->get('id_user')) ? 'null' : $member->get('id_user') ?>,
-	"isAdmin": <?php echo $member->get('is_admin') ? 'true' : 'false' ?>
+	"idUser": <?php echo is_null($member->id_user) ? 'null' : $member->id_user ?>,
+	"isAdmin": <?php echo $member->is_admin ? 'true' : 'false' ?>
 }
 <?php endif ?>

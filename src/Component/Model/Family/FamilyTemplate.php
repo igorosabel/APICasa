@@ -9,13 +9,13 @@ else{
 	$member_list_component = new MemberListComponent([ 'list' => $family->getMembers() ]);
 ?>
 {
-	"id": <?php echo $family->get('id') ?>,
-	"name": "<?php echo urlencode($family->get('name')) ?>",
+	"id": <?php echo $family->id ?>,
+	"name": "<?php echo urlencode($family->name) ?>",
 	"members": [
 <?php	echo $member_list_component ?>
 	],
 	"createdAt": "<?php echo $family->get('created_at', 'd/m/Y H:i:s') ?>",
-	"updatedAt": "<?php echo is_null($family->get('updated_at')) ? 'null' : $family->get('updated_at', 'd/m/Y H:i:s') ?>"
+	"updatedAt": "<?php echo is_null($family->updated_at) ? 'null' : $family->get('updated_at', 'd/m/Y H:i:s') ?>"
 }
 <?php
 }
