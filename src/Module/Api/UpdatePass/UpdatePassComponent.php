@@ -21,10 +21,10 @@ class UpdatePassComponent extends OComponent {
 		}
 
 		if ($this->status === 'ok') {
-			$user = User::findOne(['id' => $data->getIdToken()]);
+			$user = User::findOne(['id' => $data->id_token]);
 
-			if (!is_null($user) && $user->checkPass($data->getCurrent())) {
-				$user->pass = password_hash($data->getNewPass(), PASSWORD_BCRYPT);
+			if (!is_null($user) && $user->checkPass($data->current)) {
+				$user->pass = password_hash($data->new_pass, PASSWORD_BCRYPT);
 				$user->save();
 			}
 			else {

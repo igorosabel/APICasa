@@ -6,61 +6,31 @@ use Osumi\OsumiFramework\Core\ODTO;
 use Osumi\OsumiFramework\Web\ORequest;
 
 class UserUpdateDTO implements ODTO{
-	private ?int $id = null;
-	private ?string $name = null;
-	private ?string $email = null;
-	private ?string $color = null;
-	private ?int $id_token = null;
-
-	public function getId(): ?int {
-		return $this->id;
-	}
-	private function setId(?int $id): void {
-		$this->id = $id;
-	}
-	public function getName(): ?string {
-		return $this->name;
-	}
-	private function setName(?string $name): void {
-		$this->name = $name;
-	}
-	public function getEmail(): ?string {
-		return $this->email;
-	}
-	private function setEmail(?string $email): void {
-		$this->email = $email;
-	}
-	public function getColor(): ?string {
-		return $this->color;
-	}
-	private function setColor(?string $color): void {
-		$this->color = $color;
-	}
-	public function getIdToken(): ?int {
-		return $this->id_token;
-	}
-	private function setIdToken(?int $id_token): void {
-		$this->id_token = $id_token;
-	}
+	public ?int $id = null;
+	public ?string $name = null;
+	public ?string $email = null;
+	public ?string $color = null;
+	public ?int $id_token = null;
 
 	public function isValid(): bool {
 		return (
-			!is_null($this->getId()) &&
-			!is_null($this->getName()) &&
-			!is_null($this->getEmail()) &&
-			!is_null($this->getColor()) &&
-			$this->getId() == $this->getIdToken()
+			!is_null($this->id) &&
+			!is_null($this->name) &&
+			!is_null($this->email) &&
+			!is_null($this->color) &&
+			$this->id == $this->id_token
 		);
 	}
 
 	public function load(ORequest $req): void {
-		$this->setId($req->getParamInt('id'));
-		$this->setName($req->getParamString('name'));
-		$this->setEmail($req->getParamString('email'));
-		$this->setColor($req->getParamString('color'));
+		$this->id    = $req->getParamInt('id');
+		$this->name  = $req->getParamString('name');
+		$this->email = $req->getParamString('email');
+		$this->color = $req->getParamString('color');
+
 		$filter = $req->getFilter('Login');
-		if ($filter['status'] != 'error') {
-			$this->setIdToken($filter['id']);
+		if ($filter['status'] !== 'error') {
+			$this->id_token = $filter['id'];
 		}
 	}
 }

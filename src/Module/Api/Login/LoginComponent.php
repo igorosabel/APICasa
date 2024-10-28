@@ -37,8 +37,8 @@ class LoginComponent extends OComponent {
 			$this->status = 'error';
 		}
 		else {
-			$email = $data->getEmail();
-			$pass  = $data->getPass();
+			$email = $data->email;
+			$pass  = $data->pass;
 		}
 
 		if ($this->status === 'ok') {

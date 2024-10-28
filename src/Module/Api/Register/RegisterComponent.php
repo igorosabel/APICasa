@@ -26,13 +26,12 @@ class RegisterComponent extends OComponent {
 		if (!$data->isValid()) {
 			$this->status = 'error';
 		}
-		else {
-			$email = $data->getEmail();
-			$pass  = $data->getPass();
-			$name  = $data->getName();
-		}
 
 		if ($this->status === 'ok') {
+			$email = $data->email;
+			$pass  = $data->pass;
+			$name  = $data->name;
+
 			$user = User::findOne(['email' => $email]);
 
 			if (!is_null($user)) {

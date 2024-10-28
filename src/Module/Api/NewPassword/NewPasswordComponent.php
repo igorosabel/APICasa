@@ -31,11 +31,11 @@ class NewPasswordComponent extends OComponent {
 		}
 
 		if ($this->status === 'ok') {
-			$check = $this->ws->checkNewPasswordToken($data->getToken());
+			$check = $this->ws->checkNewPasswordToken($data->token);
 			$this->status = $check['status'];
 			if ($this->status === 'ok') {
 				$user = $check['user'];
-				$user->set('pass', password_hash($data->getPass(), PASSWORD_BCRYPT));
+				$user->set('pass', password_hash($data->pass, PASSWORD_BCRYPT));
 				$user->save();
 
 				$this->es->sendPasswordChanged($user);

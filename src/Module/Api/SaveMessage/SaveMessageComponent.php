@@ -30,21 +30,21 @@ class SaveMessageComponent extends OComponent {
 
 		if ($this->status === 'ok') {
 			if ($data->getId() !== -1) {
-				$message = Message::findOne(['id' => $data->getId()]);
+				$message = Message::findOne(['id' => $data->id]);
 			}
 			else {
 				$message = Message::create();
-				$message->id_user = $data->getIdUser();
+				$message->id_user = $data->id_user;
 			}
-			if ($message->id_user === $data->getIdUser()) {
-				$message->type       = $data->getType();
-				$message->body       = $data->getBody();
-				$message->done       = $data->getDone();
-				$message->is_private = $data->getIsPrivate();
-				$message->color      = $data->getColor();
+			if ($message->id_user === $data->id_user) {
+				$message->type       = $data->type;
+				$message->body       = $data->body;
+				$message->done       = $data->done;
+				$message->is_private = $data->is_private;
+				$message->color      = $data->color;
 				$message->save();
 
-				$this->ws->updateTags($message, $data->getTagList());
+				$this->ws->updateTags($message, $data->tag_list);
 			}
 			else {
 				$this->status = 'error';
